@@ -1,24 +1,38 @@
-#include <stdlib.h>
 #include <stdio.h>
 #include <locale.h>
-#include <math.h>
-
+#define IMP 7/100;
+//***Protótipos de Funções**********************************************************************
+void cabecalho();
 int main(){
 	setlocale(LC_ALL,"Portuguese");
-	
-	float num1,num2,r1,r2;
-	
-	printf("Digite dois números maiores que 0:\n");
-	scanf("%f%*c%f%*c",&num1,&num2);
-	
-	r1=pow(num1,num2);
-	r2=pow(num2,num1);
-	
-	printf("A potenciação do primeiro número elevado ao segundo:\n%.f",r1);
-	printf("\nA potenciação do segundo número elevado ao primeiro:\n%.f",r2);
-	
-
+	float salario,gratificacao,imposto;
+	cabecalho();
+	printf("\nDigite o salário bruto:\nR$");
+	scanf("%f%*c",&salario);
+	imposto=salario*IMP;
+	salario=salario-imposto;
+	if(salario<350){
+		gratificacao=100;
+		salario=salario+gratificacao;
+		printf("\nSalário a receber:..............................R$%.2f",salario);
+	}else if(salario>=350 && salario<600){
+		gratificacao=75;
+		salario=salario+gratificacao;
+		printf("\nSalário a receber:..............................R$%.2f",salario);	
+	}else if(salario>=600 && salario<900){
+		gratificacao=50;
+		salario=salario+gratificacao;
+		printf("\nSalário a receber:..............................R$%.2f",salario);	
+	}else if(salario>=900){
+		gratificacao=35;
+		salario=salario+gratificacao;
+		printf("\nSalário a receber:..............................R$%.2f",salario);		
+	}
 	return 0;
-	
 }
-
+//***FUNÇÂO CABEÇALHO***********************************************************************
+void cabecalho(){
+	printf("*******************************\n");
+	printf("******PROCESSO SALARIAL******\n");
+	printf("*******************************\n");
+}

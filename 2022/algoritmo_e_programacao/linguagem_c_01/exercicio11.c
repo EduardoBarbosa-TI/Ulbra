@@ -1,26 +1,38 @@
-#include <stdlib.h> //Revisar colocando o tipo de dado inteiro
 #include <stdio.h>
 #include <locale.h>
-#include <math.h>
-
+//***Protótipos de Funções**********************************************************************
+void cabecalho();
 int main(){
 	setlocale(LC_ALL,"Portuguese");
-	
-	float number, quad,cubo,r2,r3;
-	
-	printf("Digite um número que seja positivo e maior que 0:\n");
-	scanf("%f%*c", &number);
-	
-	quad=pow(number,2);
-	cubo=pow(number,3);
-	r2=sqrt(number);
-	r3=sqrt(number,3);
-	
-	printf("\n O seu número ao quadrado:\n%.f", quad);
-	printf("\n O seu número ao cubo:\n %.f", cubo);
-    printf("\n A raiz quadrada do seu número:\n %.f", r2);
-    printf("\n A raiz cúbica do seu número:\n %.f", r3);
-
-	return 0; 
-	
+	float salario,aumento;
+	cabecalho();
+	printf("\nDigite o seu salário atual:\nR$");
+	scanf("%f%*c",&salario);
+	if(salario<300){
+		aumento=salario*15/100;
+		salario=salario+aumento;
+		printf("\nVocê teve um reajuste de salário:\nSalário atual:..............................R$%.2f",salario);
+		printf("\nAumento:....................................R$%.2f",aumento);
+	}else if(salario>=300 && salario<600){
+		aumento=salario*10/100;
+		salario=salario+aumento;
+		printf("\nVocê teve um reajuste de salário:\nSalário atual:..............................R$%.2f",salario);
+		printf("\nAumento:....................................R$%.2f",aumento);
+	}else if(salario>=600 && salario<900){
+		aumento=salario*5/100;
+		salario=salario+aumento;
+		printf("\nVocê teve um reajuste de salário:\nSalário atual:..............................R$%.2f",salario);
+		printf("\nAumento:....................................R$%.2f",aumento);
+	}else if(salario>900){
+		printf("\nVocê não teve reajuste de salário:\nSalário atual:..............................R$%.2f",salario);
+		printf("\nAumento:....................................R$%.2f",aumento);	
+	}
+	return 0;
 }
+//***FUNÇÂO CABEÇALHO***********************************************************************
+void cabecalho(){
+	printf("*******************************\n");
+	printf("******PROCESSO DE AUMENTO******\n");
+	printf("*******************************\n");
+}
+

@@ -1,17 +1,31 @@
-#include <stdlib.h>
 #include <stdio.h>
 #include <locale.h>
-#include <math.h>
- int main(){
- 	setlocale(LC_ALL,"Portuguese");
- 	
- 	float area,raio;
- 	
- 	printf("Digite o raio da circunferência:\n");
- 	scanf("%f%*c", &raio);
- 	area=3.1415*pow(raio,2);
- 	printf("\n A área do circulo é igual a:\n %.f", area);
-
- 	return 0;
- }
- 
+//***Protótipos de Funções**********************************************************************
+void cabecalho();
+int main(){
+	setlocale(LC_ALL,"Portuguese");
+	float valor,impostos;
+	cabecalho();
+	printf("\nDigite o custo de fábrica do veículo:\nR$");
+	scanf("%f%*c",&valor);
+	if(valor<12000){
+		impostos=valor*5/100;
+		valor=valor+impostos;
+		printf("\nO preço total do veículo:  R$%.2f",valor);
+	}else if(valor>=12000 && valor>=25000){
+		impostos=valor*25/100;
+		valor=valor+impostos;
+		printf("\nO preço total do veículo:  R$%.2f",valor);
+	}else if(valor>25000){
+		impostos=valor*35/100;
+		valor=valor+impostos;
+		printf("\nO preço total do veículo:  R$%.2f",valor);
+	}
+	return 0;
+}
+//***FUNÇÂO CABEÇALHO***********************************************************************
+void cabecalho(){
+	printf("*******************************\n");
+	printf("*******CUSTO DE FÁBRICA********\n");
+	printf("*******************************\n");
+}

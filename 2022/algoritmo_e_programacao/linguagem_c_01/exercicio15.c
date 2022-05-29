@@ -1,29 +1,42 @@
-#include <stdlib.h>
 #include <stdio.h>
 #include <locale.h>
-
+//***Protótipos de Funções**********************************************************************
+void cabecalho();
 int main(){
-	
 	setlocale(LC_ALL,"Portuguese");
-	
-	float valor_fabrica, percentual_distribuidor, percentual_impostos, valor_d, valor_i, p_final;
-	
-	printf("Digite o preço de fábrica do veículo:\nR$");
-	scanf("%f%*c", &valor_fabrica);
-
-	printf("\nDigite o percentual de lucro do distribuidor:\n");
-	scanf("%f%*c", &percentual_distribuidor);
-	
-	printf("\nDigite o percentual de impostos:\n");
-	scanf("%f%*c", &percentual_impostos);
-	
-	valor_d=valor_fabrica*percentual_distribuidor/100;
-	valor_i=valor_fabrica*percentual_impostos/100;
-	p_final= valor_fabrica+valor_d+valor_i;
-	
-	printf("\nO valor corrrespondente ao lucro do fornecedor:\n R$%.2f", valor_d);
-	printf("\nO valor correspondente aos impostos:\n R$%.2f", valor_i);
-	printf("\nO preço final do veículo:\n R$%.2f", p_final);
-	
+	int op;
+	float valor,rendimento;
+	cabecalho();
+	do{
+	    printf("\n1. Poupança");
+	    printf("\n2. Fundo de renda fixa");
+     	printf("\n0. Sair\n");
+    	printf("\nDigite a opção:\n");
+    	scanf("%i%*c",&op);
+		switch(op){
+			case 1:
+				printf("\nDigite o valor de investimento:\nR$");
+				scanf("%f%*c",&valor);
+				rendimento=valor*3/100;
+				valor=valor+rendimento;
+				printf("\nSeu investimento renderá: R$%.2f\n\n",valor);
+				break;
+			case 2:
+				printf("\nDigite o valor de investimento:\nR$");
+				scanf("%f%*c",&valor);
+				rendimento=valor*4/100;
+				valor=valor+rendimento;
+				printf("\nSeu investimento renderá: R$%.2f\n\n",valor);	
+				break;
+			default:
+				printf("\nComando inválido!!\nDigite novamente!!");	   		
+		} 	
+	}while(op!=0);
 	return 0;
+}
+//***FUNÇÂO CABEÇALHO***********************************************************************
+void cabecalho(){
+	printf("*******************************\n");
+	printf("****PROCESSO DE INVESTIMENTO***\n");
+	printf("*******************************\n");
 }

@@ -5,11 +5,14 @@ int main(){
 	setlocale(LC_ALL,"");
 	float media;
     float nota;
-    for(int i=0;i<10;i++){
+    int i=0;
+    do{
     	printf("\nDigite a nota do aluno %d:\n",i+1);
     	scanf("%f%*c",&nota);
-		media=media+nota;	
-    } 
+		media=media+nota;
+		i++;
+    	
+	}while(i<10); 
     media=media/10;
     printf("A média da turma é: %.f",media);
 	return 0;  	

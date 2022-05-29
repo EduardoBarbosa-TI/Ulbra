@@ -1,24 +1,42 @@
-#include <stdlib.h>
 #include <stdio.h>
 #include <locale.h>
-
+//***Protótipos de Funções**********************************************************************
+void cabecalho();
 int main(){
 	setlocale(LC_ALL,"Portuguese");
-	
-	float horas_trabalhadas, salario_minimo, valor_hora, salario_bruto, imposto, salario_final;
-	
-	printf("Digite o total de horas trabalhadas:\n");
-	scanf("%f%*c", &horas_trabalhadas);
-	
-	printf("\nDigite o valor do salário mínimo:\nR$");
-	scanf("%f%*c", &salario_minimo);
-	
-	valor_hora=salario_minimo/2;
-	salario_bruto=horas_trabalhadas*valor_hora;
-	imposto=salario_bruto*3/100;
-	salario_final=salario_bruto-imposto;
-	
-	printf("\nSeu salário atual é:\n R$%.f", salario_final);
-	
+	float produto,codigo,desconto;
+	cabecalho();
+	printf("\nDigite o preço atual do produto:\nR$");
+	scanf("%f%*c",&produto);
+	printf("\nDigite o código do produto:\n");
+	scanf("%f%*c",&codigo);
+	if(produto<30){
+		printf("\nSeu produto não atingiu o valor de desconto\n");
+		printf("\nCódigo do produto:.....................%.f",codigo);
+		printf("\nValor de desconto:.....................R$%.2f",desconto);	
+		printf("\nValor de desconto:.....................R$%.2f",produto);
+			
+	}else if(produto>=30 && produto<=100){
+		desconto=produto*10/100;
+		produto=produto-desconto;
+		printf("\nSeu produto atingiu o valor de desconto\n");
+		printf("\nCódigo do produto:.....................%.f",codigo);
+		printf("\nValor de desconto:.....................R$%.2f",desconto);	
+		printf("\nValor de desconto:.....................R$%.2f",produto);	
+		
+	}else if(produto>100){
+		desconto=produto*15/100;
+		produto=produto-desconto;
+		printf("\nSeu produto atingiu o valor de desconto\n");
+		printf("\nCódigo do produto:.....................%.f",codigo);
+		printf("\nValor de desconto:.....................R$%.2f",desconto);	
+		printf("\nValor de desconto:.....................R$%.2f",produto);		
+	}
 	return 0;
+}
+//***FUNÇÂO CABEÇALHO***********************************************************************
+void cabecalho(){
+	printf("*******************************\n");
+	printf("******DESCONTO EM PRODUTOS*****\n");
+	printf("*******************************\n");
 }

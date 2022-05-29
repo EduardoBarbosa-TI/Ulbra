@@ -2,12 +2,15 @@
 #include <locale.h>
 int main(){
 	setlocale(LC_ALL,"Portuguese");
-	int numero, soma;
-	for(int i=0; i<10; i++){
+	int numero,soma,i;
+	numero=0;
+	soma=0;
+	do{
 		printf("Digite um número:\n");
 	    scanf("%i%*c",&numero);
-	    soma+=numero;	
-	}
-	printf("A soma dos dez número é:\n %i",soma);
+	    soma+=numero;
+		i++;		
+	}while(numero<10);
+	printf("A soma dos números digitados é:\n%i",soma);
 	return 0;
-};
+}
