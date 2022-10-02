@@ -1,6 +1,5 @@
 --Comando básico em linguagem SQL (Struct Query Language)
 
-
 --DDL - LINGUAGEM DE DEFINIÇÃO DE DADOS 
 CREATE DATABASE 
 
@@ -26,8 +25,16 @@ UPDATE ALUNOS SET NOME="EDUARDO BARBOSA"
 WHERE ID = 3
 
 --DQL - LINGUAGEM DE CONSULTA DE DADOS 
-SELECT * FROM ALUNO 
+
 
 SELECT NOME FROM ALUNO
+
+--Podemos utilizar combinações com a cláusula WHERE, além de operadores lógicos.
+BETWEEN	
+LIKE	
+IN
+
+SELECT * FROM ALUNO 
+WHERE CustomerName LIKE 'a%';
 
 
