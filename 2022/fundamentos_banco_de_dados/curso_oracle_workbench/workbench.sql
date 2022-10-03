@@ -24,3 +24,88 @@ SELECT DISTINCT values_to_return
 --DISTINCT
 SELECT `Continent` FROM `world`.`country`; --Retorna todos os registros na tabela coluna continent 
 SELECT DISTINCT `Continent` FROM `world`.`country`; --Retorna apenas 7 registros na tabela coluna continent 
+
+
+--Para a realização de filtragem de dados pela clausula WHERE, devemos executar alguns tipos de operadores, sendo eles:
+--Operadores aritméticos "Caracteres Coringa"
++ 
+-
+* 
+/ 
+DIV 
+% 
+MOD
+--Operadores de comparação
+<
+<=
+=
+<=>
+<>
+or
+!= 
+>=
+>
+BETWEEN
+--Operadores Lógicos
+AND
+OR
+XOR
+NOT
+
+--Example of Numeric Expressions with WHERE
+SELECT Name FROM country WHERE indepYear = 1919;
+SELECT Name, Population FROM country
+    WHERE Population > 100000000;
+SELECT Name, LifeExpectancy FROM country
+    WHERE LifeExpectancy < 40;
+
+--Example of WHERE with AND and OR
+SELECT Name, Continent FROM country
+WHERE GovernmentForm = 'Republic'
+AND (Continent = 'North America'
+OR Continent = 'Europe');
+
+--Example of ORDER BY
+SELECT Name FROM country ORDER BY Name;
+
+SELECT Name, Continent FROM country
+WHERE GovernmentForm = 'Republic'
+AND (Continent = 'North America' OR Continent = 'Europe');
+ORDER BY Name;
+
+--Example of LIMIT
+SELECT * FROM world.city
+LIMIT 0,4;
+
+SELECT Name FROM world.city
+ORDER BY Name
+LIMIT 20,4;
+
+--Alguns outros comandos de filtragem utilizados no curso
+SELECT CountryCode, Language
+FROM countrylanguage
+WHERE Language = 'Swedish'
+ORDER BY CountryCode DESC;
+
+SELECT Name, Population
+FROM country
+WHERE Population < 1000;
+
+SELECT * FROM city WHERE ID = 3875;
+
+SELECT Name 
+FROM city 
+ORDER BY Name ASC
+LIMIT 2000;
+
+SELECT CountryCode, Language
+FROM countrylanguage
+WHERE Language = 'Chinese'
+ORDER BY CountryCode DESC
+LIMIT 2;
+
+SELECT *
+FROM country
+WHERE GNP > GNPOld
+ORDER BY Name 
+LIMIT 3;
