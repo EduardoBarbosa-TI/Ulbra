@@ -109,3 +109,32 @@ FROM country
 WHERE GNP > GNPOld
 ORDER BY Name 
 LIMIT 3;
+
+SELECT Name FROM country
+WHERE Continent IN ('Antarctica', 'Oceania');
+
+SELECT Name, Continent FROM country
+WHERE Continent LIKE 'North%'
+ORDER BY Name LIMIT 3;
+
+SELECT Name, Population, Continent
+FROM country
+WHERE Continent LIKE 'North%'
+ORDER BY 2 DESC LIMIT 3;
+
+SELECT Name, LifeExpectancy, Region FROM country
+WHERE Continent LIKE 'North%'
+and LifeExpectancy BETWEEN 70 AND 73
+ORDER BY 2 DESC;
+
+SELECT Name, Continent, GNP
+FROM country
+WHERE GNP > 1000000 AND NOT (Continent = 'North America') ORDER BY GNP DESC;
+
+SELECT Name FROM country WHERE Name IS NULL;
+
+SELECT count(*) FROM country WHERE Name != NULL;
+
+SELECT count(*) FROM country WHERE Name IS NOT NULL;
+
+--MySQL provides error and warning messages
