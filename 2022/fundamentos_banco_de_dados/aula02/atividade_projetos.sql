@@ -51,7 +51,6 @@ create table projetos_melhoria_processos
 (
     id_projeto int primary key,
     resultados_esperados varchar(1000),
-    id_projeto int not null,
     id_departamento int not null, 
     constraint projetos_fk_projetos_melhoria_processos
         foreign key(id_projeto) references projetos(id)
