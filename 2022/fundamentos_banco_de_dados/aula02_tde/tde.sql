@@ -1,68 +1,77 @@
-create table categoria(
+create table categorias(
     id int auto_increment primary key,
     nome varchar(100) not null
 );
 
 create table produtos(
-    id_categoria int primary key,
-    descricao varchar(200),
+    id int primary key,
+    descricao varchar(200) not null,
     data_cadastro date not null,
-    valor_unitario float not null,
-    constraint produtos_fk_categoria
-    foreign key(id_categoria) references categoria(id)  
-    on delete restrict
-    on update cascade
-);
+    valor_unitario decimal(12,2) not null,
 
-
-create table fornecedor(
-    id int auto_increment primary key,
-    nome varchar(100) not null
-);
-
-create table pedidos_produtos_fornecedor(
-    id int auto_increment primary key,
-    quantidade int not null unique,
-    valor_unitario float not null,
-    data date not null,
-
-    id_produto int not null,
-    id_fornecedor int not null,
-
-    constraint produtos_fk_pedidos_produtos_fornecedor
-        foreign key(id_produto) references produtos(id_categoria)
-        on delete restrict
-        on update cascade,
-    constraint fornecedor_fk_pedidos_produtos_fornecedor  
-        foreign key(id_fornecedor) references fornecedor(id)  
+    id_categoria int not null,
+    constraint categorias_fk_produtos
+    foreign key(id_categoria) references categorias(id)  
         on delete restrict
         on update cascade
 );
 
+
+create table fornecedores(
+    id int auto_increment primary key,
+    nome varchar(100) not null
+);
+
+create table pedidos(
+    id int auto_increment primary key,
+    data_pedido date not null,
+    id_fornecedor int not null,
+    constraint fornecedores_fk_pedidos
+        foreign key(id_fornecedor) references fornecedores(id)
+            on update cascade
+            on delete restrict
+)
+
+create table pedidos_itens(
+    id_produto int not null,
+    id_pedido int not null,
+   /* valor_total decimal(12,2) default 0, DICA DO CASSIO*/ 
+    quantidade decimal(8,3) not null,
+    valor_unitario decimal(12,2) not null,
+    constraint pedidos_fk_pedidos_itens
+        foreign key(id_pedido) references pedidos(id)
+            on delete restrict
+            on update cascade,
+    constraint produtos_fk_pedidos_itens
+        foreign key(id_produto) references produtos(id)
+            on delete restrict
+            on update cascade,       
+);
+
 /*3 - Adicionando coluna*/
-alter table fornecedor add column data_ultima_compra date not null;
+alter table fornecedores add column data_ultima_compra date not null;
 
 /*4 - Renomeando coluna*/
-ALTER TABLE pedidos_produtos_fornecedor RENAME COLUMN data TO data_pedido;
+ALTER TABLE pedidos RENAME COLUMN data_pedido TO data_emissao;
 
 /*5 - Deletando coluna*/
 ALTER TABLE produtos DROP COLUMN data_cadastro;
 
 /*6 - Alterando restrições de chave primária*/
 ALTER TABLE produtos
-        DROP FOREIGN KEY produtos_fk_categoria;
+        DROP FOREIGN KEY categoria_fk_produtos;
 
 ALTER TABLE produtos
-        ADD constraint categoria_fk_produtos
-        foreign key(id_categoria) references categoria(id)
+        ADD constraint categorias_fk_produtos
+        foreign key(id_categoria) references categorias(id)
         on delete cascade
         on update restrict;
 
 /*7 - Alterando o valor varchar de uma coluna*/
-ALTER TABLE fornecedor MODIFY nome varchar(130);
+ALTER TABLE fornecedores MODIFY nome varchar(130);
 
 /*8 - Excluindo tabela com restrição de chave estrangeira*/
-DROP TABLE fornecedor;
+DROP TABLE fornecedores;
 /*
 MySqlError { ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails }
 O sgbd não autorizou a exclusão da tabela por causa da declaração de restrição na foreign key "on delete restrict".
@@ -70,19 +79,19 @@ O sgbd não autorizou a exclusão da tabela por causa da declaração de restri�
 
 /*9 - Adicionando nova coluna em tabela*/
 
-alter table pedidos_produtos_fornecedor add column numero_do_pedido varchar(20) not null unique;
+alter table pedidos add column numero varchar(20) not null;
 
 /*10 - Populando dados nas tabelas*/
 
 insert into categoria(nome) 
 values
-('bebidas'),
-('doces'),
-('limpeza'),
-('pets'),
-('carnes');
+    ('bebidas'),
+    ('doces'),
+    ('limpeza'),
+    ('pets'),
+    ('carnes');
 
-insert into produtos(id_categoria, descricao, valor_unitario) 
+insert into produtos(descricao, valor_unitario,id_categoriac) 
 values
 ('1','produto top','7.50'),
 ('2','produto bom','3.50'),
@@ -115,8 +124,8 @@ o sgbd não autoriza pela declaração de restrição da foreign key "on delete 
 
 /*12 - Alterando chave primaria da tupla de uma tabela*/
 
-UPDATE produtos
-SET id_categoria = '5'
+UPDATE categorias
+SET id_categoria = 5
 WHERE id_categoria = 1;
 
 /*
