@@ -33,9 +33,9 @@ create table pedidos(
 )
 
 create table pedidos_itens(
+    id int primary key auto_increment,
     id_produto int not null,
     id_pedido int not null,
-   /* valor_total decimal(12,2) default 0, DICA DO CASSIO*/ 
     quantidade decimal(8,3) not null,
     valor_unitario decimal(12,2) not null,
     constraint pedidos_fk_pedidos_itens
@@ -45,7 +45,7 @@ create table pedidos_itens(
     constraint produtos_fk_pedidos_itens
         foreign key(id_produto) references produtos(id)
             on delete restrict
-            on update cascade,       
+            on update cascade     
 );
 
 /*3 - Adicionando coluna*/
@@ -83,7 +83,7 @@ alter table pedidos add column numero varchar(20) not null;
 
 /*10 - Populando dados nas tabelas*/
 
-insert into categoria(nome) 
+insert into categorias(nome) 
 values
     ('bebidas'),
     ('doces'),
@@ -105,7 +105,7 @@ values
 ('Zé','2022-11-22'),
 ('Jocenir','2022-11-14')
 
-insert into pedidos_produtos_fornecedor(quantidade, valor_unitario, data_pedido,numero_do_pedido, id_produto, id_fornecedor) 
+insert into pedidos_itens(quantidade, valor_unitario, data_pedido,numero_do_pedido, id_produto, id_fornecedor) 
 values
 ('3','3.60','2022-11-02','574','1','4'),
 ('5','7.90','2022-11-07','467','2','3'),
