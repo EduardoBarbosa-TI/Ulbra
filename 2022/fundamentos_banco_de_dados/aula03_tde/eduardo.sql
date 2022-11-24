@@ -81,81 +81,83 @@ values  ('Jocenir','12345678911','rua jaguatirica','2001-12-06', 'brasileiro'),
 		('William','12345678914','rua leopardo','2001-12-09', 'estadunidense')
 
 
-
---1
+--3
+--A
 delete 
 from livros l
 where l.id >= 2 and l.preco > 50 and l.lancamento IS NOT NULL
 
---2
+--B
 select a.cpf,a.nome,a.endereco
 from autores a
 where nome like '%joão'
 
---3
+--C
 delete
 from livros
 where titulo in( 'BANCO DE DADOS DISTRIBUÍDO','BANCO DE DADOS DISTRIBUÍDOS') 
 
 
---4
+--D
 select a.nome, a.cpf
 from autores a
 where data_nascimento > '1990-01-00'
 
---5
+--E
 select a.matricula,a.nome, a.endereco
 from autores a
 where endereco = 'RIO DE JANEIRO'
 
---6
+--F
 --SET SQL_SAFE_UPDATES = 0;
 
 update livros set preco = 0 where lancamento is null or preco < 55
 
---7
+--G
 delete
 from livros 
 where assunto NOT in('S','P','B')
 
---8
+--H
 select count(matricula)
 from autores 
 
---9 i
+--I
 SELECT avg(matricula)
 FROM autores_livros
 
---10 j
+--J
 
---11
+--K
 select avg(preco), editora
 from livros
 where preco > 45
 
---12
+--L
 select max(preco), min(preco),avg(preco)
 from livros
 where assunto in('S','P','B')
 
---13
+--M
 select max(preco), min(preco),avg(preco)
 from livros
 where lancamento < '2022-11-22' and preco > 100
 
---14
+
+--4
+--A
 select l.titulo, l.preco * 0.10 as Opção_1,l.preco * 0.15 as Opção_2,l.preco * 0.20 as Opção_3
 from livros l
 		inner join livros 
 			ON l.lancamento is not null
---15
+--B
 select l.editora, l.assunto,l.titulo, e.id, e.nome
 from editoras e
 		right join livros l
 			ON  l.lancamento is not null
 order by l.preco DESC
 
---16
+--C
 select a.nome,a.data_nascimento,a.nacionalidade
 from autores_livros al
 		left join livros l
@@ -165,7 +167,7 @@ from autores_livros al
 where l.lancamento is null and a.nacionalidade = 'brasileiro'
 order by a.nome 
 
---17
+--D
 select a.nome, l.titulo
 from autores_livros al
 		left join autores a
@@ -175,7 +177,7 @@ from autores_livros al
 where l.lancamento is not null
 order by a.nome
 
---18
+--E
 select   e.id, e.nome 
 from autores_livros al
 	left join livros l
@@ -186,7 +188,7 @@ from autores_livros al
 		on e.id = l.editora
 where a.nome = 'Ana da Silva'
 
---19
+--F
 select  l.titulo,e.nome 
 from livros l
 	inner join autores_livros al
@@ -195,7 +197,7 @@ from livros l
 		on e.id = l.editora
 where l.preco < 50
 
---20
+--G
 select a.cpf, a.nome
 from autores_livros al
 	left join autores a
