@@ -187,7 +187,7 @@ from livros l
         inner join autores a 
 			on a.matricula= al.matricula
 
-where l.data_lancamento <CURRENT_DATE and l.data_lancamento is not null
+where l.data_lancamento < CURRENT_DATE and l.data_lancamento is not null
 order by a.nome ASC
 
 --E
