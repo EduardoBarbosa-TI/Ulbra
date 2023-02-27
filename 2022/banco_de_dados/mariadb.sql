@@ -1,4 +1,7 @@
---1-Tanto a tabela Cidade quanto a tabela Produto podem ser criadas primeiras sem necessitar de uma ordem entre elas. Logo após podemos criar a tabela Filial que contém uma chave estrangeira da tabela Cidade, após a criação da tabela Filial. Podemos criar a tabela Empregado que contém as chaves estrangeiras da tabela Filial e da tabela Cidade. Por último podemos criar a tabela Vende que contém as chaves estrangeiras das tabelas Produto e Filial.
+--1-Tanto a tabela Cidade quanto a tabela Produto podem ser criadas primeiras sem necessitar de uma ordem entre elas. 
+--Logo após podemos criar a tabela Filial que contém uma chave estrangeira da tabela Cidade, após a criação da tabela Filial. 
+--Podemos criar a tabela Empregado que contém as chaves estrangeiras da tabela Filial e da tabela Cidade. 
+--Por último podemos criar a tabela Vende que contém as chaves estrangeiras das tabelas Produto e Filial.
 
 CREATE DATABASE mariadb
 	
