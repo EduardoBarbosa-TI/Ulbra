@@ -240,12 +240,53 @@ VALUES
         (9,'2023-04-12',1,5)
       
 --5-A
-SELECT  count(v.codVenda) AS total_de_vendas
+SELECT count(v.codVenda) AS total_de_vendas
 FROM Vendas v
 
 --B
 SELECT l.titulo,l.valor, c.nome AS nome_categoria
-FROM Livro l
+FROM Livros l
 INNER JOIN Categorias c
 	ON c.codCategoria = l.codCategoria
 WHERE c.nome = 'Banco de Dados'
+
+--C
+
+
+--D
+SELECT c.nome,l.titulo, v.quantidade 
+FROM Vendas v
+INNER JOIN Livros l
+	ON l.codLivro = v.codLivro
+INNER JOIN Clientes c
+	ON c.codCliente = v.codCliente
+ORDER BY c.nome
+
+--E
+
+SELECT l.codLivro, l.titulo, a.nome
+FROM Vendas v, Livros l
+INNER JOIN Autores a
+	ON a.codAutor = l.codLivro
+where v.data_venda >= '2021-03-01' and v.data_venda <= '2021-03-31'
+
+--F
+SELECT SUM(v.quantidade), l.titulo, a.nome
+FROM Vendas v
+INNER JOIN Livros l
+	ON l.codLivro = v.codLivro
+INNER JOIN Autores a
+	ON a.codAutor = l.codAutor
+WHERE v.data_venda LIKE '20%-01-%' and v.data_venda LIKE '20%-01-%'
+GROUP BY(l.codLivro)
+LIMIT 5
+
+--G
+
+SELECT DISTINCT c.nome, l.titulo
+FROM Vendas v
+INNER JOIN Clientes c
+	ON c.codCliente = v.codCliente
+INNER JOIN Livro l
+	ON l.codLivro = v.codLivro
+WHERE l.titulo = 'Banco de dados powerful'
