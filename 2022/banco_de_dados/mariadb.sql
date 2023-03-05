@@ -5,21 +5,22 @@
 
 CREATE DATABASE mariadb
 	
-CREATE TABLE Cidades(
+CREATE TABLE cidades(
 	codcid int primary key auto_increment,
     nome varchar(100) not null,
     uf char(2) not null
 );
 
-CREATE TABLE Produtos(
+CREATE TABLE produtos(
 	codprod int primary key auto_increment,
+    nome varchar(200) not null,
     descricao varchar(200),
     preco decimal(12,2) not null,
     nomeCategoria varchar(20) not null,
     descricaoCategoria varchar(50) not null
 );
 
-CREATE TABLE Filial(
+CREATE TABLE filial(
 	codFilial int primary key auto_increment,
     nome varchar(100) not null,
     endereco varchar(100) not null,
@@ -30,7 +31,7 @@ CREATE TABLE Filial(
         on update cascade
 );
 
-CREATE TABLE Empregados(
+CREATE TABLE empregados(
 	codEmpregado int primary key auto_increment,
     nome varchar(100) not null,
     endereco varchar(100) not null,
@@ -50,21 +51,33 @@ CREATE TABLE Empregados(
         on update cascade
 );
 
-CREATE TABLE Vendas(
+CREATE TABLE vendas(
     codVenda int primary key auto_increment, 
-	codProduto int not null,
     codFilial int not null,
-    constraint produto_fk_vende
-    foreign key(codProduto) references Produtos(codprod)
-		on delete restrict
+    codVendasProdutos int not null,
+    constraint vendas_produtos_fk_vendas
+    foreign key codVendasProdutos references vendas_produtos(codVendasProduto)
+        on delete restrict
         on update cascade,
-	constraint filial_fk_vende
+	constraint filial_fk_vendas
     foreign key(codFilial) references Filial(codFilial) 
 		on delete restrict 
         on update cascade
 );
 
-INSERT INTO Cidades(nome,uf)
+CREATE TABLE vendas_produtos(
+    codVendasProdutos int primary key auto_increment,
+    quantidade int not null,
+    valorUnitario decimal(12,2) not null,
+    codProduto int not null,
+    constraint produto_fk_vendas
+    foreign key(codProduto) references Produtos(codprod)
+		on delete restrict
+        on update cascade,
+
+)
+
+INSERT INTO cidades(nome,uf)
 VALUES
 	('Rio Grande do Sul', 'RS'),
     ('São Paulo', 'SP'),
@@ -72,23 +85,23 @@ VALUES
     ('Mato Grosso do Sul', 'MS'),
     ('Espírito Santo', 'ES')
 
-INSERT INTO Produtos(preco,nomeCategoria,descricaoCategoria)
+INSERT INTO produtos(preco,nome,nomeCategoria,descricaoCategoria)
 VALUES 
-	(1.200, 'Colchões', 'Colchões ultra macios com molas'),
-    (1.000, 'Computadores', 'Computadores de última geração'),
-    (1.500, 'Tapetes', 'Pele do último mamute brasileiro'),
-    (2.000, 'Ventiladores', 'Turbina de avião acoplada'),
-    (2.200, 'Celulares', 'Celulares com 4GB Ram')
+	(1200,'ortobom', 'Colchões', 'Colchões ultra macios com molas'),
+    (1000,'Dell', 'Computadores', 'Computadores de última geração'),
+    (1500,'SulTapetes', 'Tapetes', 'Pele do último mamute brasileiro'),
+    (2000,'Mondial', 'Ventiladores', 'Turbina de avião acoplada'),
+    (2200,'Samsung', 'Celulares', 'Celulares com 4GB Ram')
 
-INSERT INTO Filial(nome, endereco,codCidade)
+INSERT INTO filial(nome, endereco,codCidade)
 VALUES
-('f1','Rua Jaguatirica, 575',1),
-('f2','Rua Leopoldina, 465',2),
-('f3','Rua Paulo Teixeira, 425',3),
-('f4','Rua Ulbra, 135',4),
-('f5','Rua Leão Marinho, 405',5) 
+    ('f1','Rua Jaguatirica, 575',1),
+    ('f2','Rua Leopoldina, 465',2),
+    ('f3','Rua Paulo Teixeira, 425',3),
+    ('f4','Rua Ulbra, 135',4),
+    ('f5','Rua Leão Marinho, 405',5) 
 
-INSERT INTO Empregados(nome,endereco,ct,rg,cpf,salario,codCidade,codFilial)
+INSERT INTO empregados(nome,endereco,ct,rg,cpf,salario,codCidade,codFilial)
 VALUES
 	('José','Rua Carlos Alves',39,21342456787,12345678912,2000,5,1),
     ('Carlos','Rua Josefina Santos',23,21546456757,12445798912,3000,4,2),
@@ -96,7 +109,15 @@ VALUES
     ('Ricardo','Rua Condado',13,21342146767,12325678912,3400,2,4),
     ('Raul','Rua Maria Luiza',34,1342566707,12895678912,2500,1,5)
 
-INSERT INTO Vende(codProduto,codFilial)
+INSERT INTO vendas_produtos(quantidade,valorUnitario,codProduto)
+VALUES 
+        (21,30,1),
+        (39,40,2),
+        (57,50,3),
+        (13,60,4),
+        (23,70,5)
+
+INSERT INTO vende(codVendasProdutos,codFilial)
 VALUES 
 	(1,5),
     (2,4),
@@ -105,23 +126,25 @@ VALUES
     (5,1)
 --3.
 --B
-SELECT MAX(preco) AS maior_preco
-FROM Produtos
+SELECT nome,MAX(preco) AS maior_preco
+FROM produtos
+GROUP BY nome
+ORDER BY preco DESC
 --C
 SELECT AVG(preco) AS media_preco
-FROM Produtos
+FROM produtos
 --D
 SELECT p.nomeCategoria
-FROM Vende v
-	INNER JOIN Filial f
+FROM vende v
+	INNER JOIN filial f
 		ON v.codFilial = f.codFilial
-	INNER JOIN Produtos p
+	INNER JOIN produtos p
 		ON p.codprod = v.codProduto
 Where f.nome = 'f3'
 --E
 SELECT e.nome, e.rg
-FROM Cidades c
-	INNER JOIN Empregados e
+FROM cidades c
+	INNER JOIN empregados e
 		ON e.codCidade = c.codcid
 WHERE c.nome = 'Rio Grande do Sul' AND e.salario > 500
 
@@ -129,19 +152,19 @@ WHERE c.nome = 'Rio Grande do Sul' AND e.salario > 500
 
 --EXERCÍCIO 04
 
-CREATE TABLE Cidades(
+CREATE TABLE cidades(
 	codCidade int primary key auto_increment,
     nome varchar(100) not null, 
     uf char(2) not null
 );
 
-CREATE TABLE Categorias(
+CREATE TABLE categorias(
 	codCategoria int primary key auto_increment,
     nome varchar(100) not null,
     descricao varchar(200)
 );
 
-CREATE TABLE Autores(
+CREATE TABLE autores(
 	codAutor int primary key auto_increment,
     nome varchar(100) not null,
     codCidade int not null,
@@ -151,7 +174,7 @@ CREATE TABLE Autores(
         on update cascade
 );
 
-CREATE TABLE Clientes(
+CREATE TABLE clientes(
 	codCliente int primary key auto_increment,
     nome varchar(100) not null,
     endereco varchar(150) not null,
@@ -162,7 +185,7 @@ CREATE TABLE Clientes(
         on update cascade
 );
 
-CREATE TABLE Livros(
+CREATE TABLE livros(
 	codLivro int primary key auto_increment,
     titulo varchar(100) not null,
     numero_folhas int not null,
@@ -180,7 +203,7 @@ CREATE TABLE Livros(
         on update cascade
 );
 
-CREATE TABLE Vendas(
+CREATE TABLE vendas(
 	codVenda int primary key auto_increment,
     quantidade int not null,
     data_venda date not null,
@@ -195,15 +218,17 @@ CREATE TABLE Vendas(
         on update cascade
 );
 
-INSERT INTO Categorias(nome,descricao)
+INSERT INTO categorias(nome,descricao)
 VALUES 
-		('Back-end','As melhores práticas para desenvolvimento back-end'),
+	    ('Back-end','As melhores práticas para desenvolvimento back-end'),
         ('Banco de Dados','Banco cheio de dados'),
         ('Front-end','Desenvolvimento prático com Wordpress'),
         ('Habilidades Práticas do Agile Software','As melhores metodologias para desenvolvimento ágil de softwares'),
         ('Metodologias Waterfall','Seguindo metodologias Go Horse')
 
-INSERT INTO Cidades(nome,uf)
+
+
+INSERT INTO cidades(nome,uf)
 VALUES 
 	('Rio Grande do Sul','RS'),
     ('Rio de Janeiro','RJ'),
@@ -212,15 +237,17 @@ VALUES
     ('Mato Grosso do Sul','MS')
 
 
- INSERT INTO Autores(nome,codCidade)
- VALUES
+INSERT INTO Autores(nome,codCidade)
+VALUES
 		('José', 5),
         ('João', 4),
         ('Josefino', 3),
         ('Marcos', 2),
         ('Tula', 1)
 
-INSERT INTO Clientes(nome,endereco,codCidade)
+
+
+INSERT INTO clientes(nome,endereco,codCidade)
 VALUES
 		('Roberta','Rua Paulo teixeira, 593',5),
         ('Everton','Rua Maria teixeira, 643',4),
