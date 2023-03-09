@@ -42,7 +42,7 @@ if (!isset($_GET['controller'])) {
             } else {
                 switch ($_REQUEST['action']) {
                     case 'registrationClients':
-                            $ClientController->editClient();
+                            $ClientController->registrationClients();
                         break;
                     case 'editClient':
                         if (!isset($_GET['id'])) {

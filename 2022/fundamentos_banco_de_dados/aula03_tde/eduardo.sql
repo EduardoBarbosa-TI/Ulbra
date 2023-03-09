@@ -15,14 +15,14 @@ CREATE TABLE livros(
     titulo varchar(80) not null,
     preco decimal(12,2) not null,
     lancamento date,
-    id_assunto char(1) not null,
-    id_editora int not null,
+    assunto char(1) not null,
+    editora int not null,
     constraint assuntos_fk_livros
-		foreign key(id_assunto) references assuntos(sigla)
+		foreign key(assunto) references assuntos(sigla)
 			on delete restrict
             on update cascade,
 	constraint editoras_fk_livros
-		foreign key(id_editora) references editoras(id)
+		foreign key(editora) references editoras(id)
 			on delete restrict
             on update cascade
 );
@@ -75,44 +75,41 @@ insert into livros(titulo,preco,assunto,editora)
 values  ('BANCO DE DADOS NA BIOINFORMÁTICA',48.00,'B',2)
 
 insert into autores(nome,cpf,endereco,data_nascimento,nacionalidade)
-values  ('Jocenir','12345678911','rua jaguatirica','2001-12-06', 'brasileiro'),
+values  ('Jocenir','12345678911','rua jaguatirica',			'2001-12-06', 'brasileiro'),
 		('André','12345678912','rua são luis','2001-12-03', 'brasileiro'),
 		('Jair','12345678913','rua paulo teixeira','2001-12-08', 'brasileiro'),
 		('William','12345678914','rua leopardo','2001-12-09', 'estadunidense')
-
 
 --3
 --A
 delete 
 from livros l
-where l.id >= 2 and l.preco > 50 and l.lancamento < current_date;
+where l.id >= 2 and l.preco > 50 and l.lancamento < current_date
 
 --B
 select a.cpf,a.nome,a.endereco
 from autores a
-where nome like '%joão%';
+where nome like '%joão%'
 
 --C
 delete
 from livros
-where titulo like 'BANCO_ DE DADO_ DISTRIBUÍDO_';
+where titulo in( 'BANCO DE DADOS DISTRIBUÍDO','BANCO DE DADOS DISTRIBUÍDOS') 
 
-
---D	
+--D
 select a.nome, a.cpf
 from autores a
-where data_nascimento > '1990-01-01';
+where data_nascimento > '1990-01-00'
 
 --E
 select a.matricula,a.nome, a.endereco
 from autores a
-where endereco like '%rio de janeiro%';
+where endereco like '%rio de janeiro%'
 
 --F
 --SET SQL_SAFE_UPDATES = 0;
 
-update livros set preco = 0 
-where lancamento is null or preco < 55
+update livros set preco = 0 where lancamento is null or preco < 55
 
 --G
 delete
@@ -120,98 +117,89 @@ from livros
 where assunto NOT in('S','P','B')
 
 --H
-select count(matricula) as quantos
+select count(matricula)
 from autores 
 
 --I
-SELECT avg(quantos) as media
-from(
-	select id_livro, count(matricula) as quantos,
-	from autores_livros
-	group by id_livro
-) as nova_consulta
-where media > 3
+SELECT id_
+FROM autores_livros
 
 --J
-select id_livro, count(matricula) as quantos
-from autores_livros
-group by id_livro
-having quantos >= 2
+
 
 --K
-select editora_id, avg(preco) as media_por_editora
-from 	livros
-where 	preco>45
-group by editora_id
+select avg(preco), editora
+from livros
+where preco > 45
 
 --L
-select id_editora, min(preco) as minimo, max(preco) as maximo, avg(preco) as media
-from 	livros
-where id_assunto in('S','P','B')
-group by id_editora
+select editora, max(preco), min(preco),avg(preco)
+from livros
+where assunto in('S','P','B')
 
 --M
-select id_editora, min(preco) as minimo, max(preco) as maximo, avg(preco) as media
-from 	livros
-where id_assunto in('S','P','B') and lancamento < current_date
-group by id_editora
-having maximo<100
+select max(preco), min(preco),avg(preco)
+from livros
+where lancamento < '2022-11-22' and preco > 100
+
+
 --4
 --A
-SELECT e.id, e.nome, l.assunto_id, l.titulo, l.preco
-from livros l 
-        inner join editoras e ON e.id = l.id_editora
-where l.lancamento < CURRENT_DATE
-order by l.preco DESC, e.id ASC, l.titulo ASC
-
+select l.titulo, l.preco * 0.10 as Opção_1,l.preco * 0.15 as Opção_2,l.preco * 0.20 as Opção_3
+from livros l
+where 
 --B
-SELECT e.id, e.nome, l.assunto_id, l.titulo, l.preco
-from livros l 
-        inner join editoras e ON e.id = l.id_editora
-where l.lancamento < CURRENT_DATE
-order by l.preco DESC, e.id ASC, l.titulo ASC
+select l.editora, l.assunto,l.titulo, e.id, e.nome
+from editoras e
+		right join livros l
+			ON  l.lancamento is not null
+order by l.preco DESC
 
 --C
-SELECT a.nome, year(a.data_nasc) as ano, month(a.data_nasc) as mes, day(a.data_nasc) as dia
-from livros l 
-		inner join autores_livros al on al.id_livro = l.id
-        inner join autores a on a.matricula = al.matricula
-where l.lancamento > CURRENT_DATE and l.lancamento is null
-order by a.nome ASC
+select a.nome,a.data_nascimento,a.nacionalidade
+from autores_livros al
+		left join livros l
+			ON l.id = al.id_livro
+		left join autores a
+			ON a.matricula = al.matricula
+where l.lancamento is null and a.nacionalidade = 'brasileiro'
+order by a.nome 
 
 --D
-SELECT a.nome as autor, l.titulo as titulo_do_livro
-from livros l 
-		inner join autores_livros al 
-			on al.id_livro = l.id
-        inner join autores a 
-			on a.matricula= al.matricula
-
-where l.data_lancamento < CURRENT_DATE and l.data_lancamento is not null
-order by a.nome ASC
+select a.nome, l.titulo
+from autores_livros al
+		left join autores a
+			ON a.matricula = al.matricula 
+		left join livros l
+			ON al.id_livro =  l.id
+where l.lancamento is not null
+order by a.nome
 
 --E
-SELECT e.id, e.nome
-from  livros l 
-		inner join autores_livros al on al.id_livro = l.id
-        inner join autores a 
-			on a.matricula = al.matricula
-        inner join editoras e 
-			ON e.id = l.id_editora
-where l.lancamento < CURRENT_DATE and a.nome like '%ana da silva%'
-
+select   e.id, e.nome 
+from autores_livros al
+	left join livros l
+		on l.id = al.id_livro
+	left join autores a
+		on a.matricula = al.matricula
+	left join editoras e
+		on e.id = l.editora
+where a.nome = 'Ana da Silva'
 
 --F
-select l.titulo,e.nome
-from livros l,  
-		inner join editoras e
-			on e.id=l.id_editora
+select  l.titulo,e.nome 
+from livros l
+	inner join autores_livros al
+		on al.id_livro = l.id
+	inner join editoras e
+		on e.id = l.editora
 where l.preco < 50
 
 --G
-SELECT a.nome,a.cpf, l.titulo, max(l.preco) as maximo
-from  livros l 
-		inner join autores_livros al on al.livro_id = l.id
-        inner join autores a on a.matricula = al.matricula
-group by a.nome, l.titulo
-having maximo > 50
+select a.cpf, a.nome
+from autores_livros al
+	left join autores a
+		on a.matricula = al.matricula
+	left join livros l
+		on l.id = al.id_livro
+where l.preco > 50
