@@ -107,12 +107,40 @@ join funcionarios f
 where o.endereco LIKE '%F03'
 
 
---Realizar uma consulta que liste qual obra realizou o maior orçamento no mês de fevereiro
+--Realizar uma consulta que liste quais obras realizaram os maiores orçamentos no mês de fevereiro
 
-select max(soo.valor) as saque_maximo
+select max(soo.valor) as saque_maximo, o.endereco
 from obras o
 join saque_orcamento_obra soo
 	on soo.cod_obra = o.cod_obra
 where soo.data_saque >= '2023-02-01' and soo.data_saque <= '2023-02-28' 
 group by soo.valor
 order by soo.valor desc
+
+--Realizar uma consulta que conte quantos funcionários realizaram saques de seu salario no mês de Fevereiro
+
+Select f.cod_funcionario, f.nome,count(f.cod_funcionario) as saques_funcionarios
+from funcionarios f
+left join saque_salario_funcionario ssf
+    on f.cod_funcionario = ssf.cod_funcionario
+where ssf.data_saque >= "2023-02-01" and ssf.data_saque <= "2023-02-28"
+group by f.nome
+order by saques_funcionarios DESC
+
+--Realizar uma consulta que conte quantos funcionários realizaram saques de seu salario no mês de Fevereiro, mas apenas os funcionários que realizaram dois ou mais saques.
+Select f.cod_funcionario, f.nome,count(f.cod_funcionario) as saques_funcionarios
+from funcionarios f
+left join saque_salario_funcionario ssf
+    on f.cod_funcionario = ssf.cod_funcionario
+where ssf.data_saque >= "2023-02-01" and ssf.data_saque <= "2023-02-28"
+group by f.nome
+having saques_funcionarios >= 2
+order by saques_funcionarios DESC
+
+--Realizar uma consulta que mostre a obra que realizou o maior saque do orçamento no mês de fevereiro
+select o.cod_obra,o.endereco,soo.valor, soo.data_saque
+from obras o 
+right join saque_orcamento_obra soo
+	on o.cod_obra = soo.cod_obra
+where soo.data_saque >= "2023-02-01" and soo.data_saque <= "2023-02-28"
+order by soo.valor DESC
