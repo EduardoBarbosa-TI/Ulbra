@@ -3,28 +3,28 @@ seguintes elementos: 0, 1, 1, 2, 3, 5, 8, 13, 21, etc. Para calculá-la, o prime
 elementos valem 1, e daí por diante, o n-ésimo elemento vale o (n-1)-ésimo elemento somado
 ao (n-2)-ésimo elemento (ex: 8 = 5 + 3).
 */
-public class  Fibonacci{
-    static long fibo(int n) {
-        int F = 0;
-        int atual = 0;
+    public class atividade03 {
+    static int fibo(int n) {
+        int numeroFibonacci = 0;
+        int numeroAntecessor = 0;
 
         for (int i = 1; i <= n; i++) {
 
             if (i == 1) {
-                F = 1;
-                atual = 0;
+                numeroFibonacci = 1;
+                numeroAntecessor = 0;
             } else {
-                F += atual;
-                atual = F - atual;
+                numeroFibonacci += numeroAntecessor;
+                numeroAntecessor = numeroFibonacci - numeroAntecessor;
             }
 
         }
 
-        return F;
+        return numeroFibonacci;
     }
     public static void main(String[] args) {
         for (int i = 0; i < 30; i++) {
-            System.out.print("(" + i + "):" + Fibonacci.fibo(i) + "\t");
+            System.out.print("(" + i + "):" + atividade03.fibo(i) + "\t");
         }
 
     }
