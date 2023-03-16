@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class exercicio04 {
+public class exercicio05 {
     public static void main(String[] args) {
         int number;
         int numberPrimo;
@@ -10,15 +10,12 @@ public class exercicio04 {
         try{
             System.out.printf("Informe um número inteiro positivo:\n");
             number = ler.nextInt();
-            int cont = 1;
 
             if(number > 0){
-               while(cont != number) {
-                   cont ++;
-                   if(cont % 2 == 0){
-                       System.out.println(cont + " é par");
+               for(int cont = 1; cont <= number; cont++)
+                   if(cont % 2 == 1){
+                       System.out.println(cont + " é ímpar ");
                    }
-               }
             }else{
                 System.out.println("Digite um número inteiro positivo !");
             }
