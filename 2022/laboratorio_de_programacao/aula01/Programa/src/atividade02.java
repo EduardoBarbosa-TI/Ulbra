@@ -7,10 +7,10 @@ public class atividade02 {
 
         System.out.println("----- ATIVIDADE 02 -----");
         int somaQuestao01 = 0;
-        for(int i = 1; i <= 100; i++){
+        for(int i = 1; i <= 100; i += 2){
             somaQuestao01 += i;
-            i++;
         }
+        
         System.out.println(somaQuestao01);
 
         System.out.println("----- ATIVIDADE 03 -----");

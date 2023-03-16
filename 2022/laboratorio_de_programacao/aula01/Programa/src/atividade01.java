@@ -11,7 +11,12 @@ public class atividade01 {
         int peso2 = 2;
         int peso3 = 5;
 
-        double media = (nota1 + nota2 + nota3) / 3;
+        double parcial1= nota1 * peso1;
+        double parcial2 = nota2 * peso2;
+        double parcial3 = nota3 *peso3;
+
+
+        double media = (parcial1 + parcial2 + parcial3) / (peso1 + peso2 + peso3);
 
         System.out.println(media);
 

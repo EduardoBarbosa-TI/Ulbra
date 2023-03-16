@@ -4,28 +4,15 @@ elementos valem 1, e daí por diante, o n-ésimo elemento vale o (n-1)-ésimo el
 ao (n-2)-ésimo elemento (ex: 8 = 5 + 3).
 */
     public class atividade03 {
-    static int fibo(int n) {
-        int numeroFibonacci = 0;
-        int numeroAntecessor = 0;
-
-        for (int i = 1; i <= n; i++) {
-
-            if (i == 1) {
-                numeroFibonacci = 1;
-                numeroAntecessor = 0;
-            } else {
-                numeroFibonacci += numeroAntecessor;
-                numeroAntecessor = numeroFibonacci - numeroAntecessor;
-            }
-
-        }
-
-        return numeroFibonacci;
-    }
+    
     public static void main(String[] args) {
-        for (int i = 0; i < 30; i++) {
-            System.out.print("(" + i + "):" + atividade03.fibo(i) + "\t");
-        }
+        int j = 1;
+     
 
+        for (int i = 1; i <= j; i++) {
+            System.out.println(i + " ");
+            i += j;
+            j = i -j;
+        }
     }
 }

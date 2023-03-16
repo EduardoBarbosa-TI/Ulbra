@@ -7,20 +7,16 @@ Por exemplo, para x = 10, a saída deve ser: 15, 30, 35, 70, 75, 150, 155, 310, 
 Crie este programa primeiro usando a estrutura de controle if-else e depois usando a
 estrutura de controle switch.
 */
-public class atividade04 {
+public class atividade04_1 {
     public static void main(String[] args) {
 
         for(int number = 10; number < 1000;){
             if(number%2 == 0){
-                number += 5;
-                System.out.println(number);
+                number += 5;    
             }else{
-                number *= 2;
-                System.out.println(number);
+                number *= 2;  
             }
+            System.out.println(number + ", ");
         }
-
-
-
     }
 }
