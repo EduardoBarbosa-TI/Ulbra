@@ -200,3 +200,36 @@ having media_salarial > 5000
 
 --Escreva uma consulta que retorne o nome do cliente, o nome do produto e a soma do valor total das compras feitas por cada cliente para cada produto. Use um right join entre as tabelas "clientes" e "compras" e um inner join entre as tabelas "produtos" e "compras" e agrupe os resultados pelo nome do cliente e pelo nome do produto.
 
+create table clientes(
+	cod_cliente int primary key auto_increment,
+    nome varchar(100) not null
+);
+
+create table produtos(
+	cod_produto int primary key auto_increment,
+    valor decimal(12,2) not null,
+    nome varchar(30) not null
+);
+
+create table compras(
+	cod_compra int primary key auto_increment,
+    quantidade int not null,
+    cod_produto int not null,
+    cod_cliente int not null,
+    constraint produtos_fk_compras 
+    foreign key(cod_produto) references produtos(cod_produto)
+		on delete restrict 
+        on update cascade,
+	constraint clientes_fk_compras 
+    foreign key(cod_cliente) references clientes(cod_cliente)
+		on delete restrict
+        on update cascade 
+);
+
+select c.nome, p.nome, SUM(cp.quantidade*p.valor) as total_compras
+from clientes c
+right join compras cp
+	on cp.cod_cliente = c.cod_cliente
+join produtos p
+	on p.cod_produto = cp.cod_produto
+group by c.nome, p.nome
