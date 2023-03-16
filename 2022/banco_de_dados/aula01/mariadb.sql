@@ -245,8 +245,6 @@ VALUES
         ('Marcos', 2),
         ('Tula', 1)
 
-
-
 INSERT INTO clientes(nome,endereco,codCidade)
 VALUES
 		('Roberta','Rua Paulo teixeira, 593',5),
