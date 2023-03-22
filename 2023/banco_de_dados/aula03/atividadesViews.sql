@@ -108,3 +108,5 @@ group by(p.nome)
 having quantidade_atual_estoque > 0
 
 
+
+
