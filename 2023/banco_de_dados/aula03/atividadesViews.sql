@@ -124,7 +124,43 @@ order by(qtd_orcamentos)  Desc
 limit 10
 
 
+--Faça uma consulta utilizando a view para acrescentar 20% nos produtos que o saldo em estoque é menor ou igual a 5.
+SELECT *,SUM(pmom.valor*1.20) as valor_mais_20 
+FROM produtos_mais_orcados_mes pmom
+where pmom.quantidade_atual_estoque >= 5
+
+--Delete todos os produtos que não foram orçados.
+
+--Explique quando utilizar o GROUP BY, de um exemplo sql.
+--Devemos utilizar o Group by quando necessitamos agrupar elementos e principalmente quando utilizamos funções de agregações, no sql abaixo se não utilizarmos o group by vamos contar todos os alunos de todas as turmas sem realizar o agrupamento por turma. Assim ficará difícil saber qual turma terá mais alunos se não realizei o agrupamento de turmas. 
+select count(a.cod_aluno) as qtd_alunos_por_turma
+from aluno a
+join turma t
+    on t.cod_aluno = a.cod_aluno
+group by(t.cod_turma)
 
 
+--Explique quando utilizar o HAVING, de um exemplo sql.
+-- O having é o where do group by, devemos utilizar ele somente depois do group by. Para entender o motivo de não utilizar o where em vez do having, devemos ter o conhecimento da ordem em que as cláusulas são executadas. Ao chegar na clásula where o agrupamento ainda não foi realizado e ainda não temos a informação da quantidade de alunos por turma, portanto não teremos como selecionar somente as turmas com menos de 20 alunos com a cláusula where.
+select count(a.cod_aluno) as qtd_alunos_por_turma
+from aluno a
+join turma t
+    on t.cod_aluno = a.cod_aluno
+group by(t.cod_turma) 
+having qtd_alunos_por_turma <= 20
 
+--Explique quando utilizar o UNION, de um exemplo sql.
+--UNION é um operador SQL utilizado para combinar o resultado de duas ou mais consultas SELECT em uma única tabela virtual que contém todos os registros retornados pelas consultas individuais. É importante destacar que o UNION remove automaticamente quaisquer linhas duplicadas entre as tabelas combinadas.
 
+SELECT *
+FROM tabela1
+UNION
+SELECT *
+FROM tabela2;
+
+--Explique quando utilizar o LEFT JOIN, de um exemplo sql.
+--A LEFT JOIN palavra-chave retorna todos os registros da tabela à esquerda (produtos) e os registros correspondentes da tabela à direita (orcamentos_produtos). O resultado é 0 registros do lado direito, se não houver correspondência.
+select p.cod_produto 
+from produtos p
+left join orcamentos_produtos op
+	on op.cod_produto = p.cod_produto
