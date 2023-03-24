@@ -70,64 +70,33 @@ values
         (1320,3,6,1)
 
 
+--VIEW
+create view view_orcamento_produtos
+as 
+select  o.cod_orcamento as cod_orcamento,
+        o.data_orcamento as data_orcamento,
+        p.cod_produto as cod_produto 
+        p.nome as nome_produto,
+        p.valor as valor_produto,
+        p.saldo as saldo_estoque_produto,
+        op.cod_orcamento_produtos as cod_orcamento_produtos
+from produtos p
+inner join orcamentos_produtos op
+    on  p.cod_produto = op.cod_produto
+inner join orcamentos o 
+
+
 --Lista de orçamentos por produto
-create view lista_orcamentos_produtos
-as
-select o.cod_orcamento,o.data_orcamento,so.nome
-from orcamentos o 
-join orcamentos_produtos op
-	on op.cod_orcamento = o.cod_orcamento
-join produtos p 
-	on p.cod_produto = op.cod_produto
-join status_orcamentos so
-	on so.cod_status = o.cod_status
-group by(p.nome)
 
 --Valor total de produtos orçados por período
-create view valor_total_produtos_periodos
-as
-select SUM(op.quantidade*op.valor_unit) as total_valor_produtos, o.data_orcamento
-from orcamentos o 
-join orcamentos_produtos op
-	on op.cod_orcamento = o.cod_orcamento
-join produtos p
-	on p.cod_produto = op.cod_produto
-group by(o.data_orcamento)
 
 --Produtos que tem “Computador” no nome e que tem quantidade em estoque.
-create view nome_produto_qtd_estoque
-as
-select p.cod_produto,p.nome,p.valor,p.saldo - (SUM(op.quantidade)) as quantidade_atual_estoque
-from produtos p 
-join orcamentos_produtos op
-	on p.cod_produto = op.cod_produto
-join orcamentos o
-	on o.cod_orcamento = op.cod_orcamento
-where p.nome = 'Computador' 
-group by(p.nome)
-having quantidade_atual_estoque > 0
 
 --Os 10 produtos mais orçados no mês de setembro de 2014 e que ainda tem saldo em estoque. Somente os produtos com o valor acima de R$ 500.00.
 
-create view produtos_mais_orcados_mes
-as
-select p.nome, p.valor,(p.saldo - (SUM(op.quantidade))) as quantidade_atual_estoque, count(op.cod_produto) as qtd_orcamentos
-from produtos p 
-join orcamentos_produtos op
-	on p.cod_produto = op.cod_produto
-join orcamentos o
-	on o.cod_orcamento = op.cod_orcamento
-where p.valor > 500 and o.data_orcamento >= '2014-09-01' and o.data_orcamento <= '2014-09-30'
-group by (op.cod_produto)
-having quantidade_atual_estoque > 0
-order by(qtd_orcamentos)  Desc
-limit 10
-
 
 --Faça uma consulta utilizando a view para acrescentar 20% nos produtos que o saldo em estoque é menor ou igual a 5.
-SELECT *,SUM(pmom.valor*1.20) as valor_mais_20 
-FROM produtos_mais_orcados_mes pmom
-where pmom.quantidade_atual_estoque >= 5
+
 
 --Delete todos os produtos que não foram orçados.
 
