@@ -71,35 +71,65 @@ values
 
 
 --VIEW
+
+
 create view view_orcamento_produtos
 as 
 select  o.cod_orcamento as cod_orcamento,
         o.data_orcamento as data_orcamento,
-        p.cod_produto as cod_produto 
+        p.cod_produto as cod_produto,
         p.nome as nome_produto,
         p.valor as valor_produto,
         p.saldo as saldo_estoque_produto,
-        op.cod_orcamento_produtos as cod_orcamento_produtos
+        op.cod_orcamento_produtos as cod_orcamento_produtos,
+        op.quantidade as quantidade_produtos,
+        op.valor_unit as valor_unitario, 
+        (p.saldo - (SUM(op.quantidade))) as quantidade_atual_estoque,
+        count(op.cod_produto) as produtos_mais_orcados 
 from produtos p
-inner join orcamentos_produtos op
-    on  p.cod_produto = op.cod_produto
-inner join orcamentos o 
+            left join orcamentos_produtos op
+                on  p.cod_produto = op.cod_produto
+            inner join orcamentos o
+	            on o.cod_orcamento = op.cod_orcamento
+            group by(p.nome)
 
 
 --Lista de orçamentos por produto
+Select cod_orcamento, data_orcamento, nome_produto
+from view_orcamento_produtos
 
 --Valor total de produtos orçados por período
+select SUM(valor_unitario*quantidade_produtos) as valor_total_produtos
+from view_orcamento_produtos
+where data_orcamento between '2023-02-01' and '2023-02-28'
 
 --Produtos que tem “Computador” no nome e que tem quantidade em estoque.
+select nome_produto, quantidade_atual_estoque
+from view_orcamento_produtos
+where quantidade_atual_estoque > 0 and nome_produto = 'Computador'
 
 --Os 10 produtos mais orçados no mês de setembro de 2014 e que ainda tem saldo em estoque. Somente os produtos com o valor acima de R$ 500.00.
+select nome_produto
+from view_orcamento_produtos
+where quantidade_atual_estoque > 0 and data_orcamento between '2014-09-01' and '2014-09-30' and valor_produto > 500
+order by(produtos_mais_orcados)
+limit 10
 
 
 --Faça uma consulta utilizando a view para acrescentar 20% nos produtos que o saldo em estoque é menor ou igual a 5.
-
+update orcamentos_produtos set valor_unit = valor_unit * .80
+where cod_produto not in(
+	select cod_produto
+    from view_orcamento_produtos 
+)
 
 --Delete todos os produtos que não foram orçados.
-
+delete  
+from produtos
+where cod_produto not in(
+	select cod_produto
+    from view_orcamento_produtos 
+)
 --Explique quando utilizar o GROUP BY, de um exemplo sql.
 --Devemos utilizar o Group by quando necessitamos agrupar elementos e principalmente quando utilizamos funções de agregações, no sql abaixo se não utilizarmos o group by vamos contar todos os alunos de todas as turmas sem realizar o agrupamento por turma. Assim ficará difícil saber qual turma terá mais alunos se não realizei o agrupamento de turmas. 
 select count(a.cod_aluno) as qtd_alunos_por_turma
