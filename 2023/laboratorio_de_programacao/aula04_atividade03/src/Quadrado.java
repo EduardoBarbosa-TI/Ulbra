@@ -1,10 +1,14 @@
 import static java.lang.Math.pow;
 
 public class Quadrado {
-    int lados = 5;
+    int lados;
+    public void setLados(int lados){
+        this.lados = lados;
+    }
+
 
     public double calularArea(){
-        double areaCalculada = pow(lados,2);
+        double areaCalculada = this.lados*lados;
         return areaCalculada;
     }
 
