@@ -1,13 +1,8 @@
 public class Pessoa {
-    private String nome;
-    private int idade;
-    private double altura;
+    private String pessoa;
 
-    public void setNome(String nome ){
-        this.nome = nome;
+    public Pessoa(String pessoa){
+        this.pessoa = pessoa;
     }
 
-    public String getNome(){
-        return this.nome;
-    }
 }

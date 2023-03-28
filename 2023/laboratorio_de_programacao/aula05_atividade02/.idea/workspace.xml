@@ -5,20 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ae170cd-8ae2-4626-809d-4550deef5738" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../aula05_atividade01/src/Pessoa.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Carro.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../aula05_atividade03/src/ContaBancaria.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../aula05_atividade03/src/Pessoa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../aula04_atividade03/out/production/aula03_atividade03/Circunferencia.class" beforeDir="false" afterPath="$PROJECT_DIR$/../aula04_atividade03/out/production/aula03_atividade03/Circunferencia.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../aula04_atividade03/out/production/aula03_atividade03/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../aula04_atividade03/out/production/aula03_atividade03/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../aula04_atividade03/out/production/aula03_atividade03/Quadrado.class" beforeDir="false" afterPath="$PROJECT_DIR$/../aula04_atividade03/out/production/aula03_atividade03/Quadrado.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../aula04_atividade03/out/production/aula03_atividade03/Trapezio.class" beforeDir="false" afterPath="$PROJECT_DIR$/../aula04_atividade03/out/production/aula03_atividade03/Trapezio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../aula04_atividade03/out/production/aula03_atividade03/Triangulo.class" beforeDir="false" afterPath="$PROJECT_DIR$/../aula04_atividade03/out/production/aula03_atividade03/Triangulo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../aula04_atividade03/src/Circunferencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/../aula04_atividade03/src/Circunferencia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../aula04_atividade03/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../aula04_atividade03/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../aula04_atividade03/src/Quadrado.java" beforeDir="false" afterPath="$PROJECT_DIR$/../aula04_atividade03/src/Quadrado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../aula04_atividade03/src/Trapezio.java" beforeDir="false" afterPath="$PROJECT_DIR$/../aula04_atividade03/src/Trapezio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../aula04_atividade03/src/Triangulo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../aula04_atividade03/src/Triangulo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../aula05_atividade01/out/production/aula05_atividade01/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../aula05_atividade01/out/production/aula05_atividade01/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../aula05_atividade01/out/production/aula05_atividade01/Pessoa.class" beforeDir="false" afterPath="$PROJECT_DIR$/../aula05_atividade01/out/production/aula05_atividade01/Pessoa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../aula05_atividade01/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../aula05_atividade01/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../aula05_atividade01/src/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/../aula05_atividade01/src/Pessoa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Carro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Carro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../aula05_atividade03/src/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/../aula05_atividade03/src/Pessoa.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +60,8 @@
       <updated>1679958808538</updated>
       <workItem from="1679958809668" duration="739000" />
       <workItem from="1679960702861" duration="11000" />
+      <workItem from="1679962013265" duration="409000" />
+      <workItem from="1679962800782" duration="122000" />
     </task>
     <servers />
   </component>
