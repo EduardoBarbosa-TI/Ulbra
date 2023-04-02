@@ -1,14 +1,14 @@
 public class Prova {
-    double notaParte01;
-    double notaParte02;
+    double nota01;
+    double nota02;
 
 
-    public Prova(double notaParte01, double notaParte02){
-        this.notaParte01 = notaParte01;
-        this.notaParte02 = notaParte02;
+    public Prova(double nota01, double nota02){
+        this.nota01 = nota01;
+        this.nota02 = nota02;
     };
     public double calcularNotaTotal(){
-        double notaTotal = this.notaParte01 + this.notaParte02;
+        double notaTotal = this.nota01 + this.nota02;
         return notaTotal;
     }
 
