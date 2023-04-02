@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5d14b9df-8555-49d8-b82a-3aef51fd28fb" name="Changes" comment="" />
+    <list default="true" id="d17d9dd1-4446-48f4-9ba2-386f24a73377" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../2022/laboratorio_de_programacao/aula02/.idea/workspace.xml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,39 +15,44 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2N78K8ASWMUp286H6d0mHiTWZr0" />
+  <component name="ProjectId" id="2NQONJ1rs8xnD7BL1u5DUZ1ASWB" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/gitHub/Ulbra/2022/laboratorio_de_programacao/aula02&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/gitHub/Ulbra/2023/laboratorio_de_programacao/aula03",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-  </component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5d14b9df-8555-49d8-b82a-3aef51fd28fb" name="Changes" comment="" />
-      <created>1679003693676</created>
+      <changelist id="d17d9dd1-4446-48f4-9ba2-386f24a73377" name="Changes" comment="" />
+      <created>1679592797706</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1679003693676</updated>
-      <workItem from="1679003695182" duration="1452000" />
-      <workItem from="1679351491643" duration="78000" />
+      <updated>1679592797706</updated>
+      <workItem from="1679592798854" duration="3489000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
