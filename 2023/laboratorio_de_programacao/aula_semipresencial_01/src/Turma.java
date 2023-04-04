@@ -3,21 +3,17 @@ public class Turma {
     Aluno aluno02;
     Aluno aluno03;
 
-    double media_aluno_01;
-    double media_aluno_02;
-    double media_aluno_03;
-    public Turma(){
-        this.aluno01 = new Aluno();
-        this.media_aluno_01 = this.aluno01.calcular_media_aluno();
-        this.aluno02 = new Aluno();
-        this.media_aluno_02 = this.aluno02.calcular_media_aluno();
-        this.aluno03 = new Aluno();
-        this.media_aluno_03 = this.aluno03.calcular_media_aluno();
+    public Turma(Aluno aluno01, Aluno aluno02, Aluno aluno03){
+        this.aluno01 = aluno01;
+        this.aluno02 = aluno02;
+        this.aluno03 = aluno03;
     }
 
-    public double calcular_media_turma(){
-       double media = this.media_aluno_01 + this.media_aluno_02 + this.media_aluno_03;
-       return media;
+
+
+    public double calcularMedia(){
+        double media = (this.aluno01.calcularMedia() + this.aluno02.calcularMedia() + this.aluno03.calcularMedia() ) / 3;
+        return media;
     }
 
 }
