@@ -11,6 +11,9 @@ public class Prova {
 
     public double calcularNotaTotal(){
         double notaTotal = this.notaParte01 + this.notaParte02;
+        if(notaTotal > 10){
+            notaTotal = 10;
+        }
         return notaTotal;
     }
 
