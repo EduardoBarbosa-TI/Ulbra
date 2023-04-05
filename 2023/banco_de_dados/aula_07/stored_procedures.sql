@@ -20,8 +20,8 @@ create table autores(
  foreign key(cod_autor) references autores(cod_autor)
 	on delete restrict
     on update cascade,
-constraint livros_fk_autores_livros 
-foreign key(cod_livro) references livros(cod_livro)
+ constraint livros_fk_autores_livros 
+ foreign key(cod_livro) references livros(cod_livro)
 	on delete restrict
     on  update cascade
  );
