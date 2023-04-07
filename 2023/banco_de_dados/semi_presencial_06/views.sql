@@ -24,6 +24,7 @@ create table autores(
     nome varchar(100) not null
 );
 
+
 create table autores_livros(
     cod_autores_livro int primary key auto_increment,
     cod_livro int not null,
