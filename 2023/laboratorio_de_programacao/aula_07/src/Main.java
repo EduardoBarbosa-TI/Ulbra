@@ -27,9 +27,5 @@ public class Main {
         System.out.println(" ");
         loja.adicionarEstoque(produto01,10);
         loja.listarProdutos();
-
-
-
-
     }
 }
