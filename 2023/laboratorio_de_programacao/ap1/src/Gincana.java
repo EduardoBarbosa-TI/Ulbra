@@ -7,6 +7,7 @@ public class Gincana {
     public void setNomeGincana(String nomeGincana) {
         this.nomeGincana = nomeGincana;
     }
+
     public void setTotalEstudantes(int totalEstudantes) {
         this.totalEstudantes = totalEstudantes;
     }
@@ -43,6 +44,8 @@ public class Gincana {
     }
 
     public void exibirVencedor(){
+        System.out.println("Gincana finalizada!!!");
+        System.out.println("Vencedor:");
         System.out.println("Nome: " + this.estudanteVencedor.getNome() + " Pontuação: " + this.estudanteVencedor.getPontos() );
     }
 

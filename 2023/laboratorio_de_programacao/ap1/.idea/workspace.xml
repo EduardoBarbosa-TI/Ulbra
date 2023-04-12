@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3685604f-52c5-45bc-8eb6-55a266492b25" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Estudante.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Gincana.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../aula_07/out/production/aula_07/Loja.class" beforeDir="false" afterPath="$PROJECT_DIR$/../aula_07/out/production/aula_07/Loja.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../aula_07/out/production/aula_07/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../aula_07/out/production/aula_07/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../aula_07/src/Loja.java" beforeDir="false" afterPath="$PROJECT_DIR$/../aula_07/src/Loja.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../aula_07/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../aula_07/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gincana.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gincana.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,11 +53,23 @@
       <option name="presentableId" value="Default" />
       <updated>1681171694799</updated>
       <workItem from="1681171696114" duration="1388000" />
-      <workItem from="1681176167306" duration="5933000" />
+      <workItem from="1681176167306" duration="5934000" />
+      <workItem from="1681268644331" duration="348000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Gincana.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
