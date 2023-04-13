@@ -131,4 +131,3 @@ join autores a
 where cod_venda is null
     
 
---Use a sua criatividade e crie uma view que se aplique nessa modelagem.
