@@ -4,7 +4,7 @@ create view view_clients
 as
 select * from clientes
 
-insert into view_client(nome,endereco)
+insert into view_clients(nome,endereco)
 values
 		('Eduardo','Rua Lonita')
 
