@@ -24,12 +24,7 @@ public class Main {
         gincana.adicionarEstudante(estudante01);
         gincana.adicionarEstudante(estudante02);
         gincana.adicionarEstudante(estudante03);
-
-
-
-
-
-
+        System.out.println("  ");
         gincana.exibirVencedor();
 
     }

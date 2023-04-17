@@ -39,16 +39,15 @@ public class Gincana {
             }
             this.totalEstudantes++;
         }else{
-            System.out.println("Usuário não encontrado !!");
+            System.out.println("Usuário não foi adicionado corretamente !!");
         }
     }
 
     public void exibirVencedor(){
         System.out.println("Gincana finalizada!!!");
+        System.out.println(" ");
         System.out.println("Vencedor:");
         System.out.println("Nome: " + this.estudanteVencedor.getNome() + " Pontuação: " + this.estudanteVencedor.getPontos() );
     }
-
-
 
 }
