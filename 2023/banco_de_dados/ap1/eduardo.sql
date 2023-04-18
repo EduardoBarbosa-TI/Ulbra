@@ -3,7 +3,7 @@
 
 create table obras(
   cod_obra int primary key auto_increment,
-  endereco varchar(100) not null,
+  endereco varchar(50) not null,
   orcamento decimal(12,2) not null,
   data_inicio date not null,
   data_conclusao date
@@ -29,21 +29,12 @@ create table funcionarios(
       on update cascade
 );
 
-create table vales_salarios(
-  cod_vale_salario int primary key auto_increment,
-  valor decimal(12,2) not null,
-  data_pagamento_vale date not null,
-  cod_funcionario int not null,
-  constraint funcionarios_fk_vales_salarios
-  foreign key(cod_funcionario) references funcionarios(cod_funcionario)
-    on delete restrict
-    on update cascade
-);
-
 create table pagamentos_funcionarios(
   cod_pagamento int primary key auto_increment,
-  valor decimal(12,2) not null,
-  data_pagamento date not null,
+  valor_vale decimal(12,2) not null,
+  data_pagamento_vale date not null,
+  valor_pagamento decimal(12,2) not null,
+  data_pagamento_salario date not null,
   cod_funcionario int not null,
   constraint pagamentos_fk_funcionarios
   foreign key(cod_funcionario) references funcionarios(cod_funcionario)
@@ -91,12 +82,6 @@ create table pagamentos_equipes(
 );
 
 --Inserção de dados
-
-
-
-
-
-  
 
 insert into vales_salarios(valor,data_pagamento_vale, cod_funcionario)
 VALUES
