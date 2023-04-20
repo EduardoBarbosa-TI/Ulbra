@@ -33,6 +33,11 @@ create table vales_salarios(
   cod_vale int primary key auto_increment,
   valor_vale decimal(12,2) not null,
   data_pagamento_vale date(12,2) not null
+  cod_funcionario int not null,
+  constarint vales_salarios_fk_funcionarios
+  foreign key(cod_funcionario) references funcionarios(cod_funcionario)
+    on delete restrict
+    on update cascade
 );
 
 create table pagamentos_funcionarios(
@@ -40,7 +45,7 @@ create table pagamentos_funcionarios(
   valor_pagamento decimal(12,2),
   data_pagamento_salario date,
   dias_faltados int,
-  cod_vale int not null,
+  cod_vale int,
   cod_funcionario int not null,
   constraint pagamentos_funcionarios_fk_funcionarios
   foreign key(cod_funcionario) references funcionarios(cod_funcionario)
@@ -93,7 +98,7 @@ create table pagamentos_equipes(
 
 --Inserção de dados
 
-INSERT INTO obras (endereco, data_inicio, orcamento)
+INSERT INTO obras (endereco, data_inicio, valor_orcamento)
 VALUES 
 ('Rua A, 123', '2022-01-01', 100000.00),
 ('Rua B, 456', '2022-02-01', 150000.00),
@@ -128,20 +133,30 @@ INSERT INTO equipes_terceirizadas (nome_equipe, qtd_integrantes_equipe) VALUES
 ('Equipe 4', 12),
 ('Equipe 5', 6);
 
-INSERT INTO pagamentos_funcionarios (valor, data_pagamento, cod_funcionario) VALUES
-  (1500.00, '2023-04-07', 1),
-  (1300.00, '2023-04-07', 2),
-  (1400.00, '2023-04-07', 3),
-  (1600.00, '2023-04-07', 4),
-  (1800.00, '2023-04-07', 5),
-  (1200.00, '2023-04-07', 6),
-  (1700.00, '2023-04-07', 7),
+INSERT INTO vales_salarios(valor_vale,data_pagamento_vale, cod_funcionario)
+VALUES 
+  (100,'2023-04-20',2),
+  (50,'2023-04-20',4),
+  (20,'2023-04-20',8),
+  (120,'2023-04-20',3),
+  (150,'2023-04-20',6),
+  (200,'2023-04-20',5)
+
+INSERT INTO pagamentos_funcionarios (valor_pagamento, data_pagamento,dias_faltados, cod_funcionario, cod_vale) VALUES
+  (1500.00, '2023-04-07', 1,1),
+  (1300.00, '2023-04-07', 2,2),
+  (1600.00, '2023-04-07', 1,2),
+  (1800.00, '2023-04-07', 2,4),
+  (1200.00, '2023-04-07', 1,5),
+  (1700.00, '2023-04-07', 3),
+  (1400.00, '2023-04-07', 2),
   (1500.00, '2023-04-07', 8),
   (1350.00, '2023-04-07', 9),
   (1450.00, '2023-04-07', 10),
   (1550.00, '2023-04-07', 11);
   
-INSERT INTO pagamentos_equipes (valor, data_pagamento, cod_equipe) VALUES
+INSERT INTO pagamentos_equipes (valor, data_pagamento_equipe, cod_equipe)
+VALUES
   (35000.00, '2023-05-05', 1),
   (31000.00, '2023-05-26', 2),
   (42000.00, '2023-06-09', 3),
@@ -169,16 +184,16 @@ INSERT INTO obras_equipes_terceirizadas (data_entrada, data_saida, valor_acertad
   ('2023-06-01', '2023-06-30', 13400.00, 1, 4),
   ('2023-07-01', '2023-07-30', 12600.00, 2, 5);
 
-insert into pagamentos_funcionarios(valor_vale, data_pagamento_vale, cod_funcionario)
-values 
-		(30.00,'2023-04-17',55),
-    (150.00,'2023-04-17',56),
-    (100.00,'2023-04-17',57),
-    (20.00,'2023-04-17',58),
-    (150.00,'2023-04-18',59),
-    (100.00,'2023-04-17',60),
-    (50.00,'2023-04-18',61)
-
+delimiter $$
+create procedure inserindo_pagamentos(IN cod_funcionario int)
+begin
+  select * 
+  from vales_salarios vs
+  join funcionarios f
+    on f.cod_funcionario = vs.cod_funcionario
+  
+end$$
+delimiter ;
 
 
 
