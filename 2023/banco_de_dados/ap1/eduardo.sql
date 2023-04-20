@@ -29,17 +29,27 @@ create table funcionarios(
       on update cascade
 );
 
+create table vales_salarios(
+  cod_vale int primary key auto_increment,
+  valor_vale decimal(12,2) not null,
+  data_pagamento_vale date(12,2) not null
+);
+
 create table pagamentos_funcionarios(
   cod_pagamento int primary key auto_increment,
-  valor_vale decimal(12,2),
-  data_pagamento_vale date,
   valor_pagamento decimal(12,2),
   data_pagamento_salario date,
+  dias_faltados int,
+  cod_vale int not null,
   cod_funcionario int not null,
-  constraint pagamentos_fk_funcionarios
+  constraint pagamentos_funcionarios_fk_funcionarios
   foreign key(cod_funcionario) references funcionarios(cod_funcionario)
     on delete restrict
-    on update cascade
+    on update cascade,
+  constraint pagamentos_funcionarios_fk_vales_salarios
+  foreign key(cod_vale) references vales_salarios(cod_vale)
+    on delete restrict 
+    on update cascade 
 );
 
 create table saques_orcamentos(
