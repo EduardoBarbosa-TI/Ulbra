@@ -185,13 +185,20 @@ INSERT INTO obras_equipes_terceirizadas (data_entrada, data_saida, valor_acertad
   ('2023-07-01', '2023-07-30', 12600.00, 2, 5);
 
 delimiter $$
-create procedure inserindo_pagamentos(IN cod_funcionario int)
+create procedure inserindo_pagamentos(IN cod_funcionario int, IN dias_faltados int)
+
 begin
-  select * 
-  from vales_salarios vs
-  join funcionarios f
-    on f.cod_funcionario = vs.cod_funcionario
-  
+  declare salario_atual decimal(12,2);
+   SELECT Nome, Quantidade,
+        CASE
+            WHEN Quantidade = 0 THEN 'Fora de estoque'
+            WHEN Quantidade <= 10 THEN 'Estoque baixo'
+            ELSE 'Em estoque'
+        END AS Status
+    FROM Produtos
+    WHERE Quantidade > 0
+
+  select * from vales_salarios vs join funcionarios f on f.cod_funcionario = vs.cod_funcionario
 end$$
 delimiter ;
 
