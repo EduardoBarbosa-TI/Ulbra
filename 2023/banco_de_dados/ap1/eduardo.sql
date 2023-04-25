@@ -45,7 +45,7 @@ create table pagamentos_funcionarios(
   valor_pagamento decimal(12,2),
   data_pagamento_salario date,
   dias_faltados int,
-  cod_vale int,
+  cod_vale int unique,
   cod_funcionario int not null,
   constraint pagamentos_funcionarios_fk_funcionarios
   foreign key(cod_funcionario) references funcionarios(cod_funcionario)
@@ -88,10 +88,15 @@ create table obras_equipes_terceirizadas(
 create table pagamentos_equipes(
   cod_pagamento_equipe int primary key auto_increment,
   valor decimal(12,2) not null,
-  data_pagamento date not null,
+  data_pagamento_equipe date not null,
   cod_equipe int not null,
+  cod_obra int not null,
   constraint equipes_terceirizadas_fk_pagamento_equipes
   foreign key(cod_equipe) references equipes_terceirizadas(cod_equipe)
+    on delete restrict
+    on update cascade,
+  constraint obras_fk_pagamentos_equipes
+  foreign key(cod_obra) references obras(cod_obra)
     on delete restrict
     on update cascade
 );
@@ -155,26 +160,26 @@ INSERT INTO pagamentos_funcionarios (valor_pagamento, data_pagamento,dias_faltad
   (1450.00, '2023-04-07', 10),
   (1550.00, '2023-04-07', 11);
   
-INSERT INTO pagamentos_equipes (valor, data_pagamento_equipe, cod_equipe)
+INSERT INTO pagamentos_equipes (valor, data_pagamento_equipe, cod_equipe, cod_obra)
 VALUES
-  (35000.00, '2023-05-05', 1),
-  (31000.00, '2023-05-26', 2),
-  (42000.00, '2023-06-09', 3),
-  (36000.00, '2023-06-16', 4),
-  (39000.00, '2023-07-07', 5),
-  (40000.00, '2023-07-14', 2),
-  (35000.00, '2023-07-21', 1),
-  (31000.00, '2023-08-04', 2),
-  (42000.00, '2023-08-11', 3),
-  (36000.00, '2023-08-18', 4),
-  (39000.00, '2023-09-01', 5),
-  (40000.00, '2023-09-08', 3),
-  (35000.00, '2023-09-15', 1),
-  (31000.00, '2023-09-22', 2),
-  (42000.00, '2023-10-06', 3),
-  (36000.00, '2023-10-13', 4),
-  (39000.00, '2023-11-03', 5),
-  (40000.00, '2023-11-10', 3);
+  (35000.00, '2023-05-05', 1,3),
+  (31000.00, '2023-05-26', 2,2),
+  (42000.00, '2023-06-09', 3,1),
+  (36000.00, '2023-06-16', 4,1),
+  (39000.00, '2023-07-07', 5,3),
+  (40000.00, '2023-07-14', 2,3),
+  (35000.00, '2023-07-21', 1,3),
+  (31000.00, '2023-08-04', 2,2),
+  (42000.00, '2023-08-11', 3,2),
+  (36000.00, '2023-08-18', 4,3),
+  (39000.00, '2023-09-01', 5,2),
+  (40000.00, '2023-09-08', 3,3),
+  (35000.00, '2023-09-15', 1,3),
+  (31000.00, '2023-09-22', 2,2),
+  (42000.00, '2023-10-06', 3,1),
+  (36000.00, '2023-10-13', 4,1),
+  (39000.00, '2023-11-03', 5,1),
+  (40000.00, '2023-11-10', 3,1);
   
 
 INSERT INTO obras_equipes_terceirizadas (data_entrada, data_saida, valor_acertado, cod_obra, cod_equipe) VALUES
@@ -185,21 +190,160 @@ INSERT INTO obras_equipes_terceirizadas (data_entrada, data_saida, valor_acertad
   ('2023-07-01', '2023-07-30', 12600.00, 2, 5);
 
 
---
+-----VIEWS-----
+--Uma view que mostre qual o valor acertado restante com as equipes terceirizadas e o valor já retirado pela equipe e sua data de saida.
+create view valor_restante_equipes
+as
+select pe.cod_pagamento_equipe,o.cod_obra,et.cod_equipe,SUM(pe.valor) as total_valor_pago_para_equipe, oet.valor_acertado,oet.data_saida
+from equipes_terceirizadas et
+join obras_equipes_terceirizadas oet
+	on oet.cod_equipe = et.cod_equipe
+join pagamentos_equipes pe
+	on pe.cod_equipe = et.cod_equipe
+join obras o
+	on o.cod_obra = pe.cod_obra
+group by pe.cod_obra, pe.cod_equipe
+order by pe.cod_pagamento_equipe;
+
+
+select cod_obra,cod_equipe,SUM(valor_acertado - total_valor_pago_para_equipe) as valor_restante
+from valor_restante_equipes
+where data_saida > current_date 
+group by cod_obra, cod_equipe
+
+--Uma view para mostrar a quantidade total de pessoas em cada obra, levando em consideração os funcionários que trabalham e as equipes terceirizadas.
+create view qtd_de_pessoas_por_obra
+as
+select o.cod_obra, SUM(DISTINCT et.qtd_integrantes_equipe) as qtd_equipe, count(f.cod_funcionario) as qtd_funcionarios, o.data_inicio as data_inicio_obra,o.data_conclusao as data_conclusao_obra
+from funcionarios f
+join obras o
+  on o.cod_obra = f.cod_obra
+join obras_equipes_terceirizadas oet
+  on oet.cod_obra = o.cod_obra
+join equipes_terceirizadas et
+  on et.cod_equipe = oet.cod_equipe
+group by(o.cod_obra);
+
+select SUM(qtd_equipe + qtd_funcionarios) as qtd_pesssoas 
+from qtd_de_pessoas_por_obra 
+where data_conclusao_obra is null
+group by(cod_obra)
+
+--Uma view que gere o total de gastos com funcionários e equipes por obra, e as datas de inicio e conclusão. Para utilizar essa view com a intenção de saber o valor restante do orçamento.
+create view total_de_gastos_por_obra
+as
+select o.cod_obra,o.valor_orcamento, SUM(pf.valor_pagamento + pe.valor) as total_gastos_por_obra, o.endereco, o.data_inicio, o.data_conclusao
+from funcionarios f
+join pagamentos_funcionarios pf
+  on pf.cod_funcionario = f.cod_funcionario
+join obras o
+  on f.cod_obra = o.cod_obra
+join pagamentos_equipes pe
+  on pe.cod_obra = o.cod_obra 
+group by(o.cod_obra);
+
+select cod_obra,SUM(valor_orcamento - total_gastos_por_obra) as valor_restante_por_obra
+from total_de_gastos_por_obra
+where data_conclusao is null
+group by(cod_obra)
+
 
 --Inserir pagamento de funcionário verificando se o funcionário realizou vales do salário ou faltou algum dia de serviço, caso seja verdadeiro desconte do salario atual e efetue o pagamento. Sabendo que cada dia corresponde a 20%.
 
 DELIMITER $$
-create procedure inserindo_pagamentos_funcionarios(
-  IN input_cod_funcionario int;
-  IN dias_faltados int;
+CREATE PROCEDURE inserindo_pagamentos_funcionarios(
+IN input_cod_funcionario INT,
+IN input_dias_faltados INT
+)
+BEGIN
+    DECLARE v_valor_do_vale DECIMAL(12,2);
+    DECLARE v_valor_do_pagamento DECIMAL(12,2);
+	  DECLARE v_cod_vale int;
+    
+	
+	SELECT vs.valor_vale, vs.cod_vale
+	INTO v_valor_do_vale, v_cod_vale
+	FROM funcionarios f
+	JOIN vales_salarios vs 
+    ON vs.cod_funcionario = f.cod_funcionario
+	WHERE vs.cod_funcionario = input_cod_funcionario
+		AND vs.data_pagamento_vale = (
+      SELECT MAX(data_pagamento_vale) 
+      FROM vales_salarios 
+      WHERE cod_funcionario = input_cod_funcionario
+    )
+		AND timestampdiff(WEEK, vs.data_pagamento_vale, CURRENT_DATE) <= 1;
+
+	
+  IF input_dias_faltados > 0 THEN
+    SELECT f.salario_semanal - (f.salario_semanal * (0.20 * input_dias_faltados)) INTO v_valor_do_pagamento
+	  FROM funcionarios f
+	  WHERE f.cod_funcionario = input_cod_funcionario;
+  ELSE
+    SELECT f.salario_semanal INTO v_valor_do_pagamento
+    FROM funcionarios f
+    WHERE f.cod_funcionario = input_cod_funcionario;
+  END IF;
+  
+  INSERT INTO pagamentos_funcionarios(valor_pagamento,data_pagamento_salario,dias_faltados,cod_vale,cod_funcionario)
+  VALUES
+      (v_valor_do_pagamento,CURRENT_DATE,input_dias_faltados,v_cod_vale,input_cod_funcionario);
+       
+END $$
+DELIMITER ;
+
+CALL inserindo_pagamentos_funcionarios(35,null);
+  
+-- Visto que todo ano finaliza uma obra e começa outra, precisamos realizar a alteração da data de conclusão dessa obra finalizada e alterar os funcionários da obra finalizada para a obra que está começando, sendo que a obra que está começando ja deve estar cadastrada.
+
+delimiter $$
+create procedure alteracao_de_obras(
+  IN input_cod_obra int,
+  IN input_data_de_conclusao date
+)
+beign
+  declare v_cod_obra_iniciada int;
+
+  update obras 
+  set data_conclusao = input_data_de_conclusao
+  where cod_obra = input_cod_obra
+
+  select o.cod_obra into v_cod_obra_iniciada
+  from obras o
+  left join funcionarios f
+    on f.cod_obra = o.cod_obra
+  where f.cod_funcionario is null
+
+  update funcionarios 
+  set cod_obra = v_cod_obra_iniciada
+  where cod_obra = input_cod_obra
+end $$
+
+delimiter ;
+
+
+
+--Criar uma stored procedure que calcule os valores necessários para pagar as equipes e funcionários e insira esse valor na tabela saques_orcamento.
+
+delimiter $$
+create procedure inserindo_valores_em_saques_orcamentos(
+  IN input_cod_obra int,
+  IN input_pedido_valor_equipe decimal(12,2)
 )
 begin
-
-
-  
-end;
-
-DELIMITER ;
-  
+  declare v_valor_funcionarios decimal(12,2)
  
+
+select SUM(f.salario_semanal) into v_valor_funcionarios
+from funcionarios f 
+join obras o
+	on o.cod_obra =  f.cod_obra
+where f.cod_obra = 2;
+
+insert into saques_orcamentos(cod_obra,valor,data_saque)
+values
+      (input_cod_obra,v_valor_funcionarios + input_pedido_valor_equipe,current_date);
+
+end $$ 
+delimiter ;
+
