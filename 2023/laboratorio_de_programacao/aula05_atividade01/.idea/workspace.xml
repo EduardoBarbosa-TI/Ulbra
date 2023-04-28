@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5c8d5f6e-712e-420a-b32e-22b94e1aa3bd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/out/production/aula05_atividade01/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/aula05_atividade01/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/aula05_atividade01/Pessoa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/aula05_atividade01/Pessoa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pessoa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../aula05_atividade02/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../aula05_atividade02/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../aula05_atividade02/src/Carro.java" beforeDir="false" afterPath="$PROJECT_DIR$/../aula05_atividade02/src/Carro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../aula05_atividade02/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../aula05_atividade02/src/Main.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2NcFF76QfEvlaqMbM5J1upnMoSF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5c8d5f6e-712e-420a-b32e-22b94e1aa3bd" name="Changes" comment="" />
+      <created>1679955356904</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1679955356904</updated>
+      <workItem from="1679955358333" duration="1950000" />
+      <workItem from="1679957344291" duration="6000" />
+      <workItem from="1679958786080" duration="5000" />
+      <workItem from="1679960716806" duration="20000" />
+      <workItem from="1679961619133" duration="350000" />
+      <workItem from="1679961998081" duration="9000" />
+      <workItem from="1679962447036" duration="17000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
