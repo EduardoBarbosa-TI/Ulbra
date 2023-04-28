@@ -338,7 +338,7 @@ select SUM(f.salario_semanal) into v_valor_funcionarios
 from funcionarios f 
 join obras o
 	on o.cod_obra =  f.cod_obra
-where f.cod_obra = 2;
+where f.cod_obra = input_cod_obra;
 
 insert into saques_orcamentos(cod_obra,valor,data_saque)
 values
