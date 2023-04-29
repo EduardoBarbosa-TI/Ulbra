@@ -2,7 +2,7 @@
 
 CREATE TABLE produtos(
     cod_produto int primary key auto_increment,
-    status_produto int not null,
+    status_produto int,
     valor_produto decimal(12,2) not null,
     descricao varchar(100),
     qtd_estoque int not null
@@ -18,7 +18,7 @@ CREATE TABLE orcamentos(
 CREATE TABLE orcamentos_produtos(
     cod_orcamento_produto int primary key auto_increment,
     qtd_produto int not null,
-    status_orcamento_produto int not null,
+    status_orcamento_produto int,
     cod_orcamento int not null,
     cod_produto int not null,
     constraint orcamentos_fk_orcamentos_produtos
@@ -100,6 +100,11 @@ BEGIN
 
         update orcamentos_produtos set status_orcamento_produto = null where cod_produto = new.cod_produto;
 
+        update produtos set status_produto = null where cod_produto = new.cod_produto;
+
+        insert into produtos_atualizados(cod_produto, qtd_estoque_anterior,qtd_estoque_atual, valor)
+        values 
+                (new.cod_produto,old.qtd_estoque,new.qtd_estoque,new.valor);
     else
         insert into produtos_atualizados(cod_produto, qtd_estoque_anterior,qtd_estoque_atual, valor)
         values 
@@ -113,6 +118,6 @@ DELIMITER $$
 CREATE TRIGGER trigger_adicionar_null AFTER INSERT ON produtos_em_falta
     FOR EACH ROW
 BEGIN
-    update produtos set status_produto = null where cod_produto = new.cod_produto;
+    
 END $$
 DELIMITER ;
