@@ -109,6 +109,7 @@ BEGIN
         insert into produtos_atualizados(cod_produto, qtd_estoque_anterior,qtd_estoque_atual, valor)
         values 
                 (new.cod_produto,old.qtd_estoque,new.qtd_estoque,new.valor);
+                
     end if;
 END $$
 
