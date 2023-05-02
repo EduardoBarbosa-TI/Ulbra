@@ -17,7 +17,7 @@ CREATE TABLE orcamentos(
 
 CREATE TABLE orcamentos_produtos(
     cod_orcamento_produto int primary key auto_increment,
-    qtd_produto int not null,
+    qtd_produto int,
     status_orcamento_produto int,
     cod_orcamento int not null,
     cod_produto int not null,
@@ -32,8 +32,8 @@ CREATE TABLE orcamentos_produtos(
 );
 
 create table produtos_atualizados( 
-    qtd_estoque_anterior int not null,
-    qtd_estoque_atual int not null,
+    qtd_estoque_anterior int,
+    qtd_estoque_atual int,
     valor_produto decimal(12,2) not null,
     cod_produto int not null,
     constraint produtos_fk_produto_atualizados
@@ -89,22 +89,19 @@ DELIMITER ;
 --2 – Faça um trigger para armazenar em uma tabela chamada produtos_atualizados (prd_codigo, prd_qtd_anterior, prd_qtd_atualizada, prd_valor) quando ocorrer quaisquer alterações nos atributos da tabela produtos. No entanto, caso a alteração atribua o valor zero para o atributo prd_qtd_estoque, a tabela produtos_em_falta deverá ser alimentada com as mesmas informações da tabela produto, exceto o atributo prd_valor. Além disso, o atributo prd_status do produto atualizado deve ser modificado para NULL e o atributo orp_status de todos os orcamentos_produtos desse produto deverá ser modificado também para NULL. 
 
 DELIMITER $$
-CREATE TRIGGER trigger_insira__produtos_em_falta_e_atualizados AFTER UPDATE ON produtos 
+CREATE TRIGGER trigger_insira__produtos_em_falta_e_atualizados BEFORE UPDATE ON produtos 
     FOR EACH ROW
 BEGIN
-
     if new.qtd_estoque = 0 then
-        insert into produtos_em_falta(cod_produto, qtd_estoque, status_produto)
+        insert into produtos_em_falta(cod_produto, qtd_estoque, status_produto,descricao)
         values 
-                (new.cod_produto,new.qtd_estoque,new.status_produto);
+                (new.cod_produto,new.qtd_estoque,new.status_produto,new.descricao);
 
         update orcamentos_produtos set status_orcamento_produto = null where cod_produto = new.cod_produto;
 
-        update produtos set status_produto = null where cod_produto = new.cod_produto;
-
         insert into produtos_atualizados(cod_produto, qtd_estoque_anterior,qtd_estoque_atual, valor)
         values 
-                (new.cod_produto,old.qtd_estoque,new.qtd_estoque,new.valor);
+                (new.cod_produto,old.qtd_estoque,null,new.valor);
     else
         insert into produtos_atualizados(cod_produto, qtd_estoque_anterior,qtd_estoque_atual, valor)
         values 
@@ -115,10 +112,4 @@ END $$
 
 DELIMITER ;
 
-DELIMITER $$
-CREATE TRIGGER trigger_adicionar_null AFTER INSERT ON produtos_em_falta
-    FOR EACH ROW
-BEGIN
-    
-END $$
-DELIMITER ;
+
