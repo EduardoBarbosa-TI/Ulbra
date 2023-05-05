@@ -71,11 +71,10 @@ INSERT INTO orcamentos (data_orcamento, status_orcamento, valor) VALUES
 --1 – Faça um trigger para alterar o estoque de um produto quando ocorrer quaisquer alterações na tabela orçamentos_produtos. Também irá alterar o estoque, quando um ítem na tabela orçamentos_Produtos for cancelado. Isso ocorre quando o campo Orp_Status recebe o valor 2.
 
 DELIMITER $$
-CREATE TRIGGER trigger_altere_estoque_quando_update AFTER UPDATE ON orcamentos_produtos
+CREATE TRIGGER tr_altere_estoque_quando_update BEFORE UPDATE ON orcamentos_produtos
     FOR EACH ROW
 BEGIN
-    
-    if new.status_orcamento_produto = 2 then
+    if new.status_orcamento_produto = 2 && old.status_orcamento_produto = 3 then
         update produtos set qtd_estoque =  qtd_estoque + old.qtd_produto
         where cod_produto = new.cod_produto;
     else
@@ -85,9 +84,52 @@ BEGIN
 END $$
 DELIMITER ;
 
+DELIMITER $$
+CREATE TRIGGER tr_altere_estoque_quando_insert BEFORE INSERT orcamentos_produtos
+    FOR EACH ROW 
+BEGIN 
+    if new.status_orcamento_produto = 3 then
+        update produtos set qtd_estoque = qtd_estoque - new.qtd_produto;
+    end if;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER tr_altere_estoque_quando_delete BEFORE DELETE orcamentos_produtos
+    FOR EACH ROW
+BEGIN
+    update produtos set qtd_estoque = qtd_estoque + old.qtd_produto;
+END $$
+DELIMTER ;
 
 --2 – Faça um trigger para armazenar em uma tabela chamada produtos_atualizados (prd_codigo, prd_qtd_anterior, prd_qtd_atualizada, prd_valor) quando ocorrer quaisquer alterações nos atributos da tabela produtos. No entanto, caso a alteração atribua o valor zero para o atributo prd_qtd_estoque, a tabela produtos_em_falta deverá ser alimentada com as mesmas informações da tabela produto, exceto o atributo prd_valor. Além disso, o atributo prd_status do produto atualizado deve ser modificado para NULL e o atributo orp_status de todos os orcamentos_produtos desse produto deverá ser modificado também para NULL. 
 
+DELIMITER $$
+CREATE TRIGGER tr_insira__produtos_em_falta_e_atualizados AFTER UPDATE ON produtos
+    FOR EACH ROW
+BEGIN
+if new.qtd_estoque = 0 then
+    insert into produtos_em_falta(cod_produto, qtd_estoque, status_produto,descricao)
+    values 
+        (new.cod_produto,new.qtd_estoque,new.status_produto,new.descricao);
+--ESSES UPDATES EXECUTAM UM ERRO POR ESTAREM REALIZANDO UPDATES NAS MESMAS TABELAS QUE EXECUTAM TRIGGERS DE UPDATE, ASSIM GERA UM LOOP INFINITO ATÉ ESTOURAR A MEMÓRIA.
+    update orcamentos_produtos set status_orcamento_produto = null where cod_produto = new.cod_produto;
+
+    update produtos set status_produto = null where cod_produto = new.cod_produto;
+
+    insert into produtos_atualizados(cod_produto, qtd_estoque_anterior,qtd_estoque_atual, valor)
+    values 
+        (new.cod_produto,old.qtd_estoque,null,new.valor);
+  
+else
+  
+end if;
+
+END $$
+DELIMITER ;
+
+
+--Solução com a alteração na regra de negócio.
 DELIMITER $$
 CREATE TRIGGER trigger_insira__produtos_em_falta_e_atualizados BEFORE UPDATE ON produtos 
     FOR EACH ROW
