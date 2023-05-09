@@ -1,7 +1,5 @@
 public class Quadrado extends FiguraGeometrica {
     int lado;
-    int areaCalculada;
-    int perimetroCalculado;
 
     public void setLados(int lado) {
         this.lado = lado;
@@ -9,19 +7,15 @@ public class Quadrado extends FiguraGeometrica {
     public int getLados() {
         return lado;
     }
-
-
     @Override
     public void calcularArea(){
-
-        areaCalculada = lado*lado;
-
+        int areaCalculada = lado*lado;
         System.out.println("Área calculada: " + areaCalculada);
-
+    }
+    @Override
+    public void calcularPerimetro(){
+       int perimetroCalculado = lado * 4;
+       System.out.println("Perímetro calculado: " + perimetroCalculado);
     }
 
-    public int calcularPerimetro(){
-        perimetroCalculado = lado * 4;
-        return perimetroCalculado;
-    }
 }

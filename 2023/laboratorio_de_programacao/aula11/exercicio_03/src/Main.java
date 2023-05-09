@@ -1,5 +1,9 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        Quadrado quadrado01 = new Quadrado();
+
+        quadrado01.setLados(4);
+        quadrado01.calcularArea();
+        quadrado01.calcularPerimetro();
     }
 }
