@@ -39,7 +39,7 @@ create table ingredientes_receitas(
 );
 create table producoes(
     cod_producao int primary key auto_increment,
-    qtd_produzida_lote int,
+    qtd_produzida_lote int default 0,
     lote int not null,
     data_producao date not null,
     status_fabricacao varchar(20) not null
@@ -58,6 +58,20 @@ create table itens_produtos_producoes(
         on delete restrict
         on update cascade  
 );
+
+--Trigger para garantir a semântica
+DELIMITER $$
+CREATE TRIGGER tr_adicionando_qtd_produtos_produzidos_quando_insert BEFORE INSERT ON itens_produtos_producoes
+    FOR EACH ROW
+begin
+
+    update producoes set qtd_produzida = qtd_produzida + new.qtd_produzida_produto
+    where cod_producao = new.cod_producao;
+
+    update producoes set data_producao = current_date where cod_producao = new.cod_producao;
+
+end $$
+DELIMITER ;
 
 --Alterar a tabela de Produtos e incluir o tempo de validade. 
 alter table produtos add data_validade_produto datetime;
@@ -206,9 +220,9 @@ where timestampdiff(DAY,pc.data_producao, current_date) <= 30  && pc.status_fabr
 group by(p.cod_produto)
 
 --Se for dobrada a produção para o próximo mês, quanto de ingrediente será  necessário.
-create view relatorio_de_vendas
+create view view_qtd_produzida_dobrada
 as
-select p.nome,SUM(ipp.qtd_produzida_produto) as qtd_total_produzido
+select p.cod_produto,p.nome,SUM(ipp.qtd_produzida_produto * 2 ) as qtd_total_produzido
 from itens_produtos_producoes ipp
 join producoes pc
 	on pc.cod_producao = ipp.cod_producao
@@ -217,7 +231,74 @@ join produtos p
 where timestampdiff(DAY,pc.data_producao, current_date) <= 30  && pc.status_fabricacao = 'Concluido'
 group by(p.cod_produto)
 
+select vqpd.cod_produto,vqpd.nome as nome_produto,vqpd.qtd_total_produzido,i.nome as nome_ingrediente, ir.qtd_ingrediente, SUM((vqpd.qtd_total_produzido * ir.qtd_ingrediente)) as qtd_necessaria_ingredientes_com_producao_dobrada
+from view_qtd_produzida_dobrada vqpd
+join receitas r
+	on r.cod_produto = vqpd.cod_produto
+join ingredientes_receitas ir
+	on ir.cod_receita = r.cod_receita
+join ingredientes i
+	on i.cod_ingrediente = ir.cod_ingrediente
+group by(i.nome)
+
+--Mostrar os ingredientes que nunca foram utilizados
+select * 
+from ingredientes i
+left join ingredientes_receitas ir
+	on ir.cod_ingrediente = i.cod_ingrediente
+where ir.qtd_ingrediente is null
+
+--Crie uma trigger para garantir o controle de estoque dos produtos fabricados. Quanto um produto for fabricado deve dar saída dos estoque dos ingredientes utilizados. Caso ocorra o estorno da fabricação, manter o estoque dos ingredientes atualizado também;
+
+DELIMITER $$
+CREATE TRIGGER tr_alterar_estoque_produto_quando_insert before insert on itens_produtos_producoes
+begin 
+
+    declare v_qtd_total_produzida int;
+    declare v_cod_produto_fabricado int;
+    declare v_cod_ingrediente int;
+    declare v_status_fabricacao varchar(20);
+    declare v_qtd_atual_estoque_ingrediente_produzidos int;
+    declare v_qtd_atual_estoque_ingrediente_cancelados int;
 
 
+    select p.status_fabricacao, new.qtd_produzida_produto, new.cod_produto
+    set v_status_fabricacao,v_qtd_total_produzida,v_cod_produto_fabricado
+    from producoes p
+    where p.cod_producao = new.cod_producao && p.status_fabricacao = 'Concluido' || p.status_fabricacao = 'Em andamento'
+
+    if v_status_fabricacao != null  then  
+        start transaction;
+            select i.cod_ingrediente,SUM(i.qtd_estoque_ingredientes-(ir.qtd_ingrediente * view_qtd_produzida)) 
+            set v_cod_ingrediente,v_qtd_atual_estoque_ingrediente_produzidos
+            from receitas r
+            join ingredientes_receitas ir
+                on ir.cod_receita = r.cod_receita
+            join ingredientes i
+                on i.cod_ingrediente = ir.cod_ingrediente
+            where r.cod_produto = v_cod_produto_fabricado
+            group by(i.nome);
+
+            update ingredientes set qtd_estoque_ingrediente = v_qtd_atual_estoque_ingrediente_produzidos
+            where cod_ingrediente = v_cod_ingrediente;
+        commit;
+    else
+    while()
+        select SUM(i.qtd_estoque_ingredientes + (ir.qtd_ingrediente * view_qtd_produzida)) 
+        set v_qtd_atual_estoque_ingrediente_cancelados
+        from receitas r
+        join ingredientes_receitas ir
+	        on ir.cod_receita = r.cod_receita
+        join ingredientes i
+	        on i.cod_ingrediente = ir.cod_ingrediente
+        where r.cod_produto = v_cod_produto_fabricado
+        group by(i.nome) 
+    end if;
+
+    update ingredientes
+
+end $$
+
+DELIMITER ;
 
 

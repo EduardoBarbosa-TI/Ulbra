@@ -16,7 +16,7 @@ commit
 CREATE TABLE pessoas (
   num_pessoa INT NOT NULL,
   nome_email VARCHAR(100) NOT NULL,
-  PRIMARY KEY (num_pessoa)
+  PRIMARY KEY (num_pessoa)''
 );
 
 INSERT INTO pessoas
