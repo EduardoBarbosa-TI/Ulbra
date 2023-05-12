@@ -1,4 +1,9 @@
 --Transction
+--Quando tenho mais de um comando SQL-DML, devo controlar a transação por conta própria.
+--A - Atomicidade
+--C - Consistência
+--I - Isolamento
+--D - Durabilidade
 SET autocommit=0;
 SET SQL_SAFE_UPDATES = 0;
 
