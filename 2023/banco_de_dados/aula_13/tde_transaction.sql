@@ -259,7 +259,6 @@ begin
     declare v_qtd_atual_estoque_ingrediente_cancelados int;
     declare i int;
 
-
     select p.status_fabricacao, new.qtd_produzida_produto, new.cod_produto
     set v_status_fabricacao,v_qtd_total_produzida,v_cod_produto_fabricado
     from producoes p
@@ -316,19 +315,16 @@ DELIMITER ;
 
 --Utilizando controle de transações, atualize as receitas para reduzir em 10% a  quantidade de fermento utilizada
 start transaction;
-    select SUM(ir.qtd_ingrediente - (ir.qtd_ingrediente * 0.10))
-    from receitas r 
-    join ingredientes_receitas ir
-        on ir.cod_receita = r.cod_receita
-    join ingredientes i
-        on i.cod_ingrediente = ir.cod_ingrediente
-    where i.nome = 'Fermento'
+    update ingredientes_receitas set qtd_ingrediente = qtd_ingrediente -
+    (qtd_ingrediente * 0.10)
+    where cod_ingrediente = 4;
 
 --Confirme a transação do exercício anterior
 commit;
 
-
 --Utilizando controle de transações, exclua todos os registros de produção do último mês
+start transaction;
+    delete from producoes where data_producao = '2023-04-01' between '2023-04-30'
 
 --Desfaça a transação realizada no exercício anterior
 rollback;
