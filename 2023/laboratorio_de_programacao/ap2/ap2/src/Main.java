@@ -12,7 +12,6 @@ public class Main {
 
         ulbraLib.adicionarLivro(codigoLimpo);
         System.out.println(codigoLimpo.detalhesProduto());
-        ulbraLib.verificacaoDisponibilidade("Código Limpo");
         ulbraLib.verificacaoDisponibilidade(1);
         System.out.println(" ");
 
@@ -38,7 +37,6 @@ public class Main {
 
         ulbraLib.adicionarLivro(arquiteturaLimpa);
         System.out.println(arquiteturaLimpa.detalhesProduto());
-        ulbraLib.verificacaoDisponibilidade("Arquitetura Limpa");
         ulbraLib.verificacaoDisponibilidade(3);
         System.out.println(" ");
 
@@ -64,7 +62,6 @@ public class Main {
 
         ulbraLib.adicionarLivro(aVoltaDosqueNaoForam);
         System.out.println(aVoltaDosqueNaoForam.detalhesProduto());
-        ulbraLib.verificacaoDisponibilidade("A Volta Dos Que Não Foram");
         ulbraLib.verificacaoDisponibilidade(5);
 
         System.out.println(" ");
@@ -77,7 +74,7 @@ public class Main {
         updateCodigoLimpo.setDataPublicacao("2008/08/01");
         updateCodigoLimpo.setStatus("Disponível");
 
-        ulbraLib.atualizarDetalhes(updateCodigoLimpo);
+        ulbraLib.atualizarDetalhes(updateCodigoLimpo,"A volta dos que já foram","Eduardo Barbosa");
         System.out.println(" ");
         ulbraLib.verificacaoDisponibilidade(1);
 
