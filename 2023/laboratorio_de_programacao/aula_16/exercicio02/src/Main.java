@@ -1,12 +1,12 @@
 public class Main {
     public static void main(String[] args) {
         double[] notas = {8.5, 7.0, 9.0, 6.5, 10.0};
-        double media=0;
+        double sumNotas = 0;
 
         for (int i = 0; i < notas.length; i++) {
-             media = media + notas[i];
+             sumNotas += notas[i];
         }
 
-        System.out.println(media / notas.length);
+        System.out.println(sumNotas / notas.length);
     }
 }
