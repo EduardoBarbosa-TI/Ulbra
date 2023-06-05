@@ -10,8 +10,5 @@ public class Main {
         }
 
         System.out.println("O maior valor é: " + maiorValor);
-
-
-
     }
 }
