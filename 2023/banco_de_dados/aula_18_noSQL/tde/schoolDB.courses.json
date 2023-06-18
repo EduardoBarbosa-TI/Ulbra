@@ -1,0 +1,25 @@
+[{
+  "_id": {
+    "$oid": "6485e1fe8e8a1e73dd3be12c"
+  },
+  "courseName": "Banco de dados",
+  "teacherName": "Cássio H.",
+  "students": [
+    {
+      "firstName": "Eduardo",
+      "lastName": "Barbosa"
+    },
+    {
+      "firstName": "Vanessa",
+      "lastName": "Cardoso"
+    },
+    {
+      "firstName": "Carol",
+      "lastName": "Bauer"
+    },
+    {
+      "firstName": "Eduardo",
+      "lastName": "Augusto"
+    }
+  ]
+}]

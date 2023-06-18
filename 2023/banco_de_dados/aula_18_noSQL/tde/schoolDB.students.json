@@ -1,0 +1,27 @@
+[{
+  "_id": {
+    "$oid": "64860ed88e8a1e73dd3be131"
+  },
+  "firstName": "Eduardo",
+  "lastName": "Barbosa",
+  "age": 21,
+  "grade": 6.5
+},
+{
+  "_id": {
+    "$oid": "64860f218e8a1e73dd3be134"
+  },
+  "firstName": "Vanessa",
+  "lastName": "Cardoso",
+  "age": 31,
+  "grade": 8.5
+},
+{
+  "_id": {
+    "$oid": "64860f488e8a1e73dd3be136"
+  },
+  "firstName": "Carol",
+  "lastName": "Bauer",
+  "age": 31,
+  "grade": 8.5
+}]
