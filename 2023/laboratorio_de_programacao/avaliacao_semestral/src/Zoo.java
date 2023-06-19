@@ -27,6 +27,7 @@ public class Zoo {
             if(funcionarios[i] == null){
                 verificacaoFunc = true;
                 funcionarios[i] = funcionario;
+                System.out.println("Funcionário " + funcionario.getNome() + " adicionado na vaga " + i );
                 break;
             }
         }

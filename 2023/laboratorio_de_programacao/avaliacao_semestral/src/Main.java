@@ -30,25 +30,25 @@ public class Main {
 
         System.out.println(" ");
 
-        //Inicializando um objeto Zoo com apenas uma vaga para animais
+        //Inicializando um objeto Zoo com vagas indisponível
         Zoo zoologico02 = new Zoo(0,0);
         zoologico02.adicionarAnimais(ornitorrinco);
         zoologico02.adicioanarFuncionarios(ricardo);
 
         System.out.println(" ");
 
-        //Utilizando métodos dos objeto ornitorrinco
-        ornitorrinco.amamentar();
-        ornitorrinco.movimentar();
-        ornitorrinco.movimentar("Direita");
+        //Utilizando métodos da class e subclass Animal e Mamifero
         ornitorrinco.getNome();
         ornitorrinco.getIdade();
         ornitorrinco.getEspecie();
         ornitorrinco.getPeso();
+        ornitorrinco.amamentar();
+        ornitorrinco.movimentar();
+        ornitorrinco.movimentar("Direita");
 
         System.out.println(" ");
 
-        //Utilizando métodos dos objeto ave
+        //Utilizando métodos da class e subclass Animal e Ave
         papagaio.realizarTruque();
         papagaio.voar();
         papagaio.getNome();
@@ -56,5 +56,16 @@ public class Main {
         papagaio.getIdade();
         papagaio.getEnvergaduraAsa();
         papagaio.getPeso();
+
+        System.out.println(" ");
+
+        //Utilizando métodos da class e subclass Funcionario e Veterinario
+        ricardo.getNome();
+        ricardo.getCargo();
+        ricardo.getEspecialidade();
+        ricardo.getSalario();
+        ricardo.realizarExame(ornitorrinco);
+        ricardo.realizarExame(papagaio);
+
     }
 }
