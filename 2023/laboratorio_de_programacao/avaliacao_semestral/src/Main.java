@@ -5,6 +5,7 @@ public class Main {
         ornitorrinco.setNome("Fred");
         ornitorrinco.setEspecie("Ornithorhynchus");
         ornitorrinco.setIdade(3);
+        ornitorrinco.setTipoPelagem("Tordilho negro");
         ornitorrinco.setPeso(10.40);
 
         //Inicializando um objeto Ave
@@ -37,33 +38,35 @@ public class Main {
 
         System.out.println(" ");
 
+        //Informações do mamífero
+        ornitorrinco.informacoesMamifero();
+
+        System.out.println(" ");
+
         //Utilizando métodos da class e subclass Animal e Mamifero
-        ornitorrinco.getNome();
-        ornitorrinco.getIdade();
-        ornitorrinco.getEspecie();
-        ornitorrinco.getPeso();
         ornitorrinco.amamentar();
         ornitorrinco.movimentar();
         ornitorrinco.movimentar("Direita");
 
         System.out.println(" ");
 
+        //Informações da Ave
+        papagaio.informacoesAve();
+
+        System.out.println(" ");
+
         //Utilizando métodos da class e subclass Animal e Ave
         papagaio.realizarTruque();
         papagaio.voar();
-        papagaio.getNome();
-        papagaio.getEspecie();
-        papagaio.getIdade();
-        papagaio.getEnvergaduraAsa();
-        papagaio.getPeso();
+
+        System.out.println(" ");
+
+        //Informações do veterinário
+        ricardo.informacoesVeterinario();
 
         System.out.println(" ");
 
         //Utilizando métodos da class e subclass Funcionario e Veterinario
-        ricardo.getNome();
-        ricardo.getCargo();
-        ricardo.getEspecialidade();
-        ricardo.getSalario();
         ricardo.realizarExame(ornitorrinco);
         ricardo.realizarExame(papagaio);
 
