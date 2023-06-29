@@ -1,0 +1,30 @@
+{
+    "userId": "234254366134143",
+    "bebidas":[
+        {
+            "refrigerante":{
+                "nome": "Guarana Artartica"
+            }
+        }
+    ],
+    "pizzas":[
+        {
+            "tamanho": "Média",
+            "borda": "chocolate",
+            "sabores":[
+                {
+                    "nome": "Portuguesa"
+                },
+                {
+                    "nome": "Calabresa"
+                },
+                {
+                    "nome": "4Queijos"
+                }
+            ],
+            "preco_pizza": 60.00
+        }
+    ],
+    "createdAt": "2023-06-12 00:30",
+    "preco_total": 120.00
+} 
