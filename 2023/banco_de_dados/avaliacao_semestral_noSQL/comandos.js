@@ -72,9 +72,9 @@ db.clients.find()
 db.pedidos.aggregate([
   {
     $lookup: {
-      from: "usuarios",
-      localField: "userId",
-      foreignField: "_id",
+      from: "clients",
+      localField: "id",
+      foreignField: "userId",
       as: "usuario"
     }
   }
