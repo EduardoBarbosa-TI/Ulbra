@@ -1,0 +1,40 @@
+{
+    "_id": {
+      "$oid": "649dcf32dfa7c07696c1d875"
+    },
+    "bebidas": [
+      {
+        "refrigerantes": [
+          {
+            "marca": "coca-cola",
+            "tamanho": "2L",
+            "preco": 12
+          }
+        ]
+      }
+    ],
+    "pizzas": [
+      {
+        "tamanho": "Média",
+        "borda": "Chocolate",
+        "sabores": [
+          {
+            "nome": "Portuguesa"
+          },
+          {
+            "nome": "Calabresa"
+          },
+          {
+            "nome": "4 queijos"
+          },
+          {
+            "nome": "Filé e fritas"
+          }
+        ],
+        "preco_pizza": 60
+      }
+    ],
+    "userId": "649cfcb8bfe6c3a47605161a",
+    "createdAt": "2023-06-29",
+    "precoTotal": 72
+}
