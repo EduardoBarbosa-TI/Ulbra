@@ -1,4 +1,5 @@
-//Modelagaem noSQL https://www.figma.com/file/RsaGFOE9zKQRzxP9mqeL3U/Untitled?type=whiteboard&node-id=0-1&t=qlZVfsQiBrDzTpbg-0
+//Vídeo explicação - https://www.loom.com/share/0b646b9e146a470b9c670fe80e51a553
+//Modelagaem noSQL - https://www.figma.com/file/RsaGFOE9zKQRzxP9mqeL3U/Untitled?type=whiteboard&node-id=0-1&t=qlZVfsQiBrDzTpbg-0
 //Comandos básicos de criação e inserção
 db.createCollection("clientes")
 db.clients.insertOne({
