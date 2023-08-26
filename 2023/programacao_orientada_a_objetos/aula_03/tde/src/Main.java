@@ -14,6 +14,7 @@ public class Main {
         CalculadoraBase calcSoma= new CalculadoraBase();
         calcSoma.calcular(operadorSoma,listaDoubleSoma);
         System.out.println(calcSoma.getResult());
+
         //Multiplicação
         System.out.println("Multiplicação");
         IOperador operadorMultiplicacao = new Multiplicacao();
@@ -26,6 +27,7 @@ public class Main {
         CalculadoraBase calcMultiplicacao = new CalculadoraBase();
         calcMultiplicacao.calcular(operadorMultiplicacao,listaDoubleMultiplicacao);
         System.out.println(calcMultiplicacao.getResult());
+
         //Subtração
         System.out.println("Subtração");
         IOperador operadorSubtracao = new Subtracao();
@@ -38,6 +40,7 @@ public class Main {
         CalculadoraBase calcSubtracao = new CalculadoraBase();
         calcSubtracao.calcular(operadorSubtracao,listaDoubleSubtracao);
         System.out.println(calcSubtracao.getResult());
+
         //Divisão
         System.out.println("Divisão");
         IOperador operadorDivisao = new Divisao();
@@ -45,11 +48,11 @@ public class Main {
 
         listaDoubleDivisao.add(20.0);
         listaDoubleDivisao.add(5.0);
-        listaDoubleDivisao.add(5.0);
         listaDoubleDivisao.add(2.0);
+        listaDoubleDivisao.add(60.0);
+
         CalculadoraBase calcDivisao = new CalculadoraBase();
         calcDivisao.calcular(operadorDivisao,listaDoubleDivisao);
-        System.out.println(calcSubtracao.getResult());
-
+        System.out.println(calcDivisao.getResult());
     }
 }

@@ -6,9 +6,13 @@ public class Divisao implements  IOperador{
         double result = lista.get(0);
 
         for(int i = 1; i < lista.size(); i++){
-            System.out.println(result);
-            result /= lista.get(i);
+            if(lista.get(i) > result && i == 1) {
+                return 0;
+            } else if(lista.get(i) > result) {
+                return result;
+            }
 
+            result /= lista.get(i);
         }
 
         return result;
