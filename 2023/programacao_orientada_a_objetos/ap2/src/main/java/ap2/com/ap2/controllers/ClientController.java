@@ -1,22 +1,38 @@
 package ap2.com.ap2.controllers;
 
-import ap2.com.ap2.services.UserService;
+import ap2.com.ap2.model.ClientModel;
+import ap2.com.ap2.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 @RestController
-@RequestMapping("/")
-public class UserController {
-    private UserService userService;
+@RequestMapping("/clients")
+public class ClientController {
+    private ClientService clientService;
     @Autowired
-    public UserController( UserService userService){
-        this.userService = userService;
+    public ClientController(ClientService userService){
+        this.clientService = userService;
     }
-    @GetMapping("/hello")
-    public String getAll(){
-        return this.userService.getAll();
+    @GetMapping()
+    public ArrayList<ClientModel> getAll(@RequestParam(name = "age", required = false) Integer age){
+        return this.clientService.getAll(age);
     }
-
+    @GetMapping("/{id}")
+    public ClientModel getById(@PathVariable int id){
+        return this.clientService.getById(id);
+    }
+    @PostMapping
+    public String store(@RequestBody ClientModel clientData){
+        return this.clientService.store(clientData);
+    }
+    @PutMapping("/{id}")
+    public String update(@RequestBody ClientModel clientData,@PathVariable int id){
+        return this.clientService.update(clientData,id);
+    }
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable int id){
+        return this.clientService.delete(id);
+    }
 }

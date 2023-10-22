@@ -1,22 +1,53 @@
 package ap2.com.ap2.services;
 
-import ap2.com.ap2.model.UserModel;
-
+import ap2.com.ap2.model.ClientModel;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
 @Service
-public class UserService {
-    private ArrayList<UserModel> userList;
-    public UserModel getAll(String name){
-        for (int i = 0; i < this.userList.size(); i++){
-            if(name.isEmpty()){
-                if(this.userList.get(i).name() == name){
-                    return this.userList.get(i);
+public class ClientService {
+    private ArrayList<ClientModel> clients = new ArrayList();
+    public ArrayList<ClientModel> getAll(Integer age){
+        ArrayList<ClientModel> queryClient = new ArrayList();
+        if(age != null){
+            for(int i = 0; i < this.clients.size();i++){
+                if(this.clients.get(i).age() == age){
+                    queryClient.add(this.clients.get(i));
                 }
-            }else return userList;
+            }
+            return queryClient;
+        }
+        return this.clients;
+    }
+    public ClientModel getById(int clientId){
+        for(int i = 0; i < this.clients.size();i++){
+            if(this.clients.get(i).id() == clientId){
+                return this.clients.get(i);
+            }
         }
         return null;
+    }
+    public String store(ClientModel clientData){
+        this.clients.add(clientData);
+        return "Cliente adicionado com sucesso!";
+    }
+    public String update(ClientModel clientData, int clientId){
+        for(int i = 0; i < this.clients.size();i++){
+            if(this.clients.get(i).id() == clientId){
+                this.clients.set(i,clientData);
+                break;
+            }
+        }
+        return "Cliente atualizado com sucesso!";
+    }
+    public String delete(int clientId){
+        for(int i = 0; i < this.clients.size();i++){
+            if(this.clients.get(i).id() == clientId){
+                this.clients.remove(i);
+                break;
+            }
+        }
+        return "Cliente removido com sucesso!";
     }
 }
