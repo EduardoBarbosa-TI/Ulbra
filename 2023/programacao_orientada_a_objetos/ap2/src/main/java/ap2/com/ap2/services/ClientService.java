@@ -1,53 +1,29 @@
 package ap2.com.ap2.services;
 
-import ap2.com.ap2.model.ClientModel;
+import ap2.com.ap2.entities.Client;
+import ap2.com.ap2.repository.ClientRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-
+import java.util.List;
+import java.util.Optional;
 @Service
 public class ClientService {
-    private ArrayList<ClientModel> clients = new ArrayList();
-    public ArrayList<ClientModel> getAll(Integer age){
-        ArrayList<ClientModel> queryClient = new ArrayList();
-        if(age != null){
-            for(int i = 0; i < this.clients.size();i++){
-                if(this.clients.get(i).age() == age){
-                    queryClient.add(this.clients.get(i));
-                }
-            }
-            return queryClient;
-        }
-        return this.clients;
+    private ClientRepository clientRepository;
+    @Autowired
+    public ClientService(ClientRepository clientRepository){this.clientRepository = clientRepository;}
+    public List<Client> getAll(Integer age){
+        return this.clientRepository.findAll();
     }
-    public ClientModel getById(int clientId){
-        for(int i = 0; i < this.clients.size();i++){
-            if(this.clients.get(i).id() == clientId){
-                return this.clients.get(i);
-            }
-        }
-        return null;
+    public Optional<Client> getById(int clientId){
+        return this.clientRepository.findById(clientId);
     }
-    public String store(ClientModel clientData){
-        this.clients.add(clientData);
-        return "Cliente adicionado com sucesso!";
+    public Client store(Client clientData){
+      return this.clientRepository.save(clientData);
     }
-    public String update(ClientModel clientData, int clientId){
-        for(int i = 0; i < this.clients.size();i++){
-            if(this.clients.get(i).id() == clientId){
-                this.clients.set(i,clientData);
-                break;
-            }
-        }
-        return "Cliente atualizado com sucesso!";
+    public Client update(Client clientData){
+        return this.clientRepository.save(clientData);
     }
-    public String delete(int clientId){
-        for(int i = 0; i < this.clients.size();i++){
-            if(this.clients.get(i).id() == clientId){
-                this.clients.remove(i);
-                break;
-            }
-        }
-        return "Cliente removido com sucesso!";
+    public void delete(int clientId){
+        this.clientRepository.deleteById(clientId);
     }
 }
