@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 @RestController
-@ControllerAdvice
 @RequestMapping("/clients")
 public class ClientController {
     private ClientService clientService;
