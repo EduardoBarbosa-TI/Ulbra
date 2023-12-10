@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,17 +17,16 @@ public class ClientResponseDTO {
     private String job;
     private int age;
 
-    public ClientResponseDTO convertToDto(Client client){
-        return new ClientResponseDTO(client.getName(),client.getJob(), client.getAge());
+    public ClientResponseDTO convertToDto(Optional<Client> client){
+        return new ClientResponseDTO(client.get().getName(),client.get().getJob(), client.get().getAge());
     }
+    public List<ClientResponseDTO> convertListToClientInDto(List<Client> clients) {
+        List<ClientResponseDTO> listDtoClients = new ArrayList();
 
-
-    public List<ClientResponseDTO> convertListToClientInDto(List<Client> clients){
-        List<ClientResponseDTO> listDtoClients;
-
-        for(int i = 0; i < clients.size(); i++){
-            this.listDtoClients.add(new ClientResponseDTO(clients.get(i).getName(),clients.get(i).getJob(),clients.get(i).getAge()));
+        for (int i = 0; i < clients.size(); i++) {
+            listDtoClients.add(new ClientResponseDTO(clients.get(i).getName(), clients.get(i).getJob(), clients.get(i).getAge()));
         }
 
         return listDtoClients;
+    }
 }
