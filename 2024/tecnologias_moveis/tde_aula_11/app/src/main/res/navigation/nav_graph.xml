@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment" >
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.tde_jetpack.presentation.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_createProductFragment"
+            app:destination="@id/createProductFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_productDetailActivity"
+            app:destination="@id/productDetailActivity" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createProductFragment"
+        android:name="com.example.tde_jetpack.presentation.fragments.CreateProductFragment"
+        android:label="fragment_create_product"
+        tools:layout="@layout/fragment_create_product" >
+        <action
+            android:id="@+id/action_createProductFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/productDetailActivity"
+        android:name="com.example.tde_jetpack.ProductDetailActivity"
+        android:label="activity_product_detail"
+        tools:layout="@layout/activity_product_detail" />
+</navigation>
