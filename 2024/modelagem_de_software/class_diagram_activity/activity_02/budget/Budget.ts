@@ -1,5 +1,5 @@
-import { Car } from "./Car"
-import { Mechanic } from "./Mechanic"
+import { Car } from "./client/Car"
+import { Mechanic } from "./employees/Mechanic"
 
 export class Budget {
     private description: String

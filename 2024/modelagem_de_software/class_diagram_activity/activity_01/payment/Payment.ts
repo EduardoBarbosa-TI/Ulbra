@@ -1,4 +1,4 @@
-import { Request } from "./Request"
+import { Request } from "../order/Order"
 
 export class Payment{
     private description: String

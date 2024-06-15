@@ -1,11 +1,11 @@
-import { Address } from "./Address";
-import { Budget } from "./Budget";
-import { Car } from "./Car";
-import { Client } from "./Client";
-import { Item } from "./Item";
-import { Mechanic } from "./Mechanic";
-import { Payment } from "./Payment";
-import { Product } from "./Product";
+import { Address } from "./budget/client/Address";
+import { Budget } from "./budget/Budget";
+import { Car } from "./budget/client/Car";
+import { Item } from "./budget/order/Item";
+import { Mechanic } from "./budget/employees/Mechanic";
+import { Payment } from "./payment/Payment";
+import { Product } from "./budget/order/Product";
+import { Client } from "./budget/client/Client";
 
 export class System{
     public async system(){

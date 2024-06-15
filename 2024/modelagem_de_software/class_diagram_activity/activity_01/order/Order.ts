@@ -1,4 +1,4 @@
-import { Client } from "./Client"
+import { Client } from "./client/Client"
 
 export class Request {
     private numberOrder: String

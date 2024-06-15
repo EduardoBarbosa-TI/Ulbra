@@ -1,5 +1,5 @@
 import { Product } from "./Product"
-import { Request } from "./Request"
+import { Request } from "./Order"
 
 
 export class Item{

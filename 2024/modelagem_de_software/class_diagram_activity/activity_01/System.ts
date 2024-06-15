@@ -1,8 +1,8 @@
-import { Client } from "./Client";
-import { Item } from "./Item";
-import { Payment } from "./Payment";
-import { Product } from "./Product";
-import { Request } from "./Request";
+import { Client } from "./order/client/Client";
+import { Item } from "./order/Item";
+import { Payment } from "./payment/Payment";
+import { Product } from "./order/Product";
+import { Request } from "./order/Order";
 
 
 export class System{

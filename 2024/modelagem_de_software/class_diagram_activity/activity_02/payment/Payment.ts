@@ -1,4 +1,4 @@
-import { Budget } from "./Budget"
+import { Budget } from "../budget/Budget"
 
 export class Payment{
     private description: String

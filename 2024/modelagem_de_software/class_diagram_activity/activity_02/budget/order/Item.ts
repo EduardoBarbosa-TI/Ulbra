@@ -1,4 +1,4 @@
-import { Budget } from "./Budget"
+import { Budget } from "../Budget"
 import { Product } from "./Product"
 
 export class Item{
