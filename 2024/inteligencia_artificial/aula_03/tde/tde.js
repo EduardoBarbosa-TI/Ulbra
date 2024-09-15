@@ -1,3 +1,147 @@
+// Dados de treinamento: entradas e saídas esperadas
+let treinamento = [
+    // Número 0
+    {
+        entrada: [
+            [1,1,1,1,1,1],
+            [1,0,0,0,0,1],
+            [1,0,0,0,0,1],
+            [1,0,0,0,0,1],
+            [1,0,0,0,0,1],
+            [1,0,0,0,0,1],
+            [1,0,0,0,0,1],
+            [1,1,1,1,1,1]
+        ],
+        resultadoEsperado: [1,0,0,0,0,0,0,0,0,0]
+    },
+    // Número 1
+    {
+        entrada: [
+            [0,0,1,1,0,0],
+            [0,1,0,1,0,0],
+            [0,0,0,1,0,0],
+            [0,0,0,1,0,0],
+            [0,0,0,1,0,0],
+            [0,0,0,1,0,0],
+            [0,0,0,1,0,0],
+            [0,1,1,1,1,1]
+        ],
+        resultadoEsperado: [0,1,0,0,0,0,0,0,0,0]
+    },
+    // Número 2
+    {
+        entrada: [
+            [1,1,1,1,1,1],
+            [0,0,0,0,0,1],
+            [0,0,0,0,0,1],
+            [1,1,1,1,1,1],
+            [1,0,0,0,0,0],
+            [1,0,0,0,0,0],
+            [1,0,0,0,0,0],
+            [1,1,1,1,1,1]
+        ],
+        resultadoEsperado: [0,0,1,0,0,0,0,0,0,0]
+    },
+    // Número 3
+    {
+        entrada: [
+            [1,1,1,1,1,1],
+            [0,0,0,0,0,1],
+            [0,0,0,0,0,1],
+            [1,1,1,1,1,1],
+            [0,0,0,0,0,1],
+            [0,0,0,0,0,1],
+            [0,0,0,0,0,1],
+            [1,1,1,1,1,1]
+        ],
+        resultadoEsperado: [0,0,0,1,0,0,0,0,0,0]
+    },
+    // Número 4
+    {
+        entrada: [
+            [1,0,0,0,1,0],
+            [1,0,0,0,1,0],
+            [1,0,0,0,1,0],
+            [1,1,1,1,1,1],
+            [0,0,0,0,1,0],
+            [0,0,0,0,1,0],
+            [0,0,0,0,1,0],
+            [0,0,0,0,1,0]
+        ],
+        resultadoEsperado: [0,0,0,0,1,0,0,0,0,0]
+    },
+    // Número 5
+    {
+        entrada: [
+            [1,1,1,1,1,1],
+            [1,0,0,0,0,0],
+            [1,0,0,0,0,0],
+            [1,1,1,1,1,1],
+            [0,0,0,0,0,1],
+            [0,0,0,0,0,1],
+            [0,0,0,0,0,1],
+            [1,1,1,1,1,1]
+        ],
+        resultadoEsperado: [0,0,0,0,0,1,0,0,0,0]
+    },
+    // Número 6
+    {
+        entrada: [
+            [1,1,1,1,1,1],
+            [1,0,0,0,0,0],
+            [1,0,0,0,0,0],
+            [1,1,1,1,1,1],
+            [1,0,0,0,0,1],
+            [1,0,0,0,0,1],
+            [1,0,0,0,0,1],
+            [1,1,1,1,1,1]
+        ],
+        resultadoEsperado: [0,0,0,0,0,0,1,0,0,0]
+    },
+    // Número 7
+    {
+        entrada: [
+            [1,1,1,1,1,1],
+            [0,0,0,0,0,1],
+            [0,0,0,0,0,1],
+            [0,0,0,0,1,0],
+            [0,0,0,1,0,0],
+            [0,0,1,0,0,0],
+            [0,1,0,0,0,0],
+            [1,0,0,0,0,0]
+        ],
+        resultadoEsperado: [0,0,0,0,0,0,0,1,0,0]
+    },
+    // Número 8
+    {
+        entrada: [
+            [1,1,1,1,1,1],
+            [1,0,0,0,0,1],
+            [1,0,0,0,0,1],
+            [1,1,1,1,1,1],
+            [1,0,0,0,0,1],
+            [1,0,0,0,0,1],
+            [1,0,0,0,0,1],
+            [1,1,1,1,1,1]
+        ],
+        resultadoEsperado: [0,0,0,0,0,0,0,0,1,0]
+    },
+    // Número 9
+    {
+        entrada: [
+            [1,1,1,1,1,1],
+            [1,0,0,0,0,1],
+            [1,0,0,0,0,1],
+            [1,1,1,1,1,1],
+            [0,0,0,0,0,1],
+            [0,0,0,0,0,1],
+            [0,0,0,0,0,1],
+            [1,1,1,1,1,1]
+        ],
+        resultadoEsperado: [0,0,0,0,0,0,0,0,0,1]
+    }
+];
+
 class RedeNeural {
     constructor(tamanhoEntrada, tamanhoOculto, tamanhoSaida) {
         this.tamanhoEntrada = tamanhoEntrada;
@@ -105,31 +249,31 @@ class RedeNeural {
     }
 }
 
-// Exemplo de uso
-
-// Criando uma rede neural com 3 neurônios na entrada, 4 na camada oculta e 1 na saída
-let rede = new RedeNeural(3, 4, 1);
-
-// Dados de treinamento: entradas e saídas esperadas
-let treinamento = [
-    { entrada: [0, 0, 0], saida: [0] },
-    { entrada: [0, 0, 1], saida: [0] },
-    { entrada: [0, 1, 0], saida: [0] },
-    { entrada: [0, 1, 1], saida: [0] },
-    { entrada: [1, 0, 0], saida: [1] },
-    { entrada: [1, 0, 1], saida: [1] },
-    { entrada: [1, 1, 0], saida: [1] },
-    { entrada: [1, 1, 1], saida: [1] }
-];
+let rede = new RedeNeural(48, 96, 10);
 
 // Treinando a rede
 for (let i = 0; i < 10000; i++) {  // 10.000 iterações de treinamento
     for (let dados of treinamento) {
-        rede.treinar(dados.entrada, dados.saida, 0.1);
+        rede.treinar(dados.entrada.flat(), dados.resultadoEsperado, 0.1);
     }
 }
 
-// Testando a rede
-console.log(rede.feedforward([0, 0, 0]));  // Espera-se uma saída próxima de 0
-console.log(rede.feedforward([1, 1, 1]));  // Espera-se uma saída próxima de 1
+const numberTest = [
+    [1,1,1,1,1,1],
+    [1,0,0,0,0,1],
+    [1,0,0,0,0,1],
+    [1,1,1,1,1,1],
+    [0,0,0,0,0,1],
+    [0,0,0,0,0,1],
+    [0,0,0,0,0,1],
+    [1,1,1,1,1,1]
+]
+
+let numbersResult = rede.feedforward(numberTest.flat());
+
+numbersResult.reduce((_, valorAtual, indice) => {
+    if (valorAtual > 0.94) {
+        console.log("O número é:", indice);
+    }
+}, null);
 
