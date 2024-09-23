@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <header>
+        <nav id="menu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Serviços</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+        <button id="menu-toggle">Menu</button>
+    </header>
+
+    <main>
+        <section id="contact">
+            <h2>Contato do Edu</h2>
+            <form id="formsContact">
+                <label for="name">Nome</label>
+                <br>
+                <input name="name" type="text" id="inputName">
+                <br><br>
+                <label for="email">Email</label>
+                <br>
+                <input name="email" type="email" id="inputEmail">
+                <br><br>
+                <label for="phone">Celular</label>
+                <br>
+                <input type="text" name="phone" id="inputPhone">
+                <br><br>
+                <button type="button" onclick="submitForm()">Enviar</button>
+            </form>
+
+            <div id="tableContact">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>2024 Meu site</p>
+    </footer>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
