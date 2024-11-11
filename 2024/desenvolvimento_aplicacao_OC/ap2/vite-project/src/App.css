@@ -1,0 +1,138 @@
+:root{
+  width: 1024px;
+  margin: 0 auto;
+}
+
+img {
+  margin-left: 20px;
+  border-radius: 45px;
+  width: 100px;
+}
+
+header {
+  border-top: 20px solid;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: rgb(146, 141, 141);
+}
+
+header h2 {
+  flex: 1;
+  text-align: center;
+  color: black;
+}
+
+.title-h2 {
+  font-size: 35px;
+}
+
+button {
+  width: 200px;
+}
+
+section {
+  padding: 0px 50px 0px 50px;
+}
+
+#div-data-cep {
+  display: flex;
+  gap: 100px;
+}
+
+#section-form{
+  margin-top: 70px;
+  display: flex;
+  justify-content: center;
+  gap: 120px;
+}
+
+.form-container {
+  padding: 20px 70px 20px 50px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 270px;
+}
+
+#foto{
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 3px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+input[type="text"]:focus {
+  border-color: #666;
+}
+
+.radio-group {
+  display: flex;
+  gap: 10px;
+}
+
+.radio-group label {
+  font-size: 15px;
+  color: #333;
+}
+
+/* CSS Card */
+.coll-card{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: 400px;
+}
+
+.card {
+  background-color: #606060;
+  border-radius: 15px;
+  border: 2px solid #4da6ff;
+  width: 200px;
+  max-height: 300px ;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.info p {
+  color: white;
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.footer{
+  margin-top: 100px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: #606060;
+  color: white;
+}
