@@ -1,0 +1,102 @@
+{
+  "products": [
+    {
+      "name": "Produto atualizado 1",
+      "price": "100",
+      "description": "Descrição tooop",
+      "photo_url": "teste",
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "name": "Produto 2",
+      "price": 29.99,
+      "description": "Descrição do Produto 2",
+      "photo_url": "https://picsum.photos/200"
+    },
+    {
+      "id": "3",
+      "name": "Produto 3",
+      "price": 39.99,
+      "description": "Descrição do Produto 3",
+      "photo_url": "https://picsum.photos/200"
+    },
+    {
+      "id": "4",
+      "name": "Produto 4",
+      "price": 49.99,
+      "description": "Descrição do Produto 4",
+      "photo_url": "https://picsum.photos/200"
+    },
+    {
+      "id": "5",
+      "name": "Produto 5",
+      "price": 59.99,
+      "description": "Descrição do Produto 5",
+      "photo_url": "https://picsum.photos/200"
+    },
+    {
+      "id": "6",
+      "name": "Produto 6",
+      "price": 69.99,
+      "description": "Descrição do Produto 6",
+      "photo_url": "https://picsum.photos/200"
+    },
+    {
+      "id": "7",
+      "name": "Produto 7",
+      "price": 79.99,
+      "description": "Descrição do Produto 7",
+      "photo_url": "https://picsum.photos/200"
+    },
+    {
+      "id": "8",
+      "name": "Produto 8",
+      "price": 89.99,
+      "description": "Descrição do Produto 8",
+      "photo_url": "https://picsum.photos/200"
+    },
+    {
+      "id": "9",
+      "name": "Produto 9",
+      "price": 99.99,
+      "description": "Descrição do Produto 9",
+      "photo_url": "https://picsum.photos/200"
+    },
+    {
+      "id": "10",
+      "name": "Produto 10",
+      "price": 109.99,
+      "description": "Descrição do Produto 10",
+      "photo_url": "https://picsum.photos/200"
+    },
+    {
+      "id": "11",
+      "name": "Produto 11",
+      "price": 119.99,
+      "description": "Descrição do Produto 11",
+      "photo_url": "https://picsum.photos/200"
+    },
+    {
+      "id": "12",
+      "name": "Produto 12",
+      "price": 129.99,
+      "description": "Descrição do Produto 12",
+      "photo_url": "https://picsum.photos/200"
+    },
+    {
+      "id": "13",
+      "name": "Produto 13",
+      "price": 139.99,
+      "description": "Descrição do Produto 13",
+      "photo_url": "https://picsum.photos/200"
+    },
+    {
+      "id": "14",
+      "name": "Produto 14",
+      "price": 149.99,
+      "description": "Descrição do Produto 14",
+      "photo_url": "https://picsum.photos/200"
+    }
+  ]
+}
