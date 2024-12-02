@@ -1,0 +1,88 @@
+{
+  "products": [
+    {
+      "name": "Fritadeira Sem Óleo",
+      "price": 339.90,
+      "description": "Air Fryer 5L, Mondial, Preto/Inox, 1900W, 220V - AFN-50-BI",
+      "photo_url": "https://m.media-amazon.com/images/I/51xynYwPf3L._AC_SX679_.jpg",
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "name": "WAP Aspirador de Pó Robô ROBOT W90 3 em 1",
+      "price": 297.90,
+      "description": "Automático, 250ml, Sistema Antiqueda e Rodas Emborrachadas, 30W 3,6VDC Bivolt",
+      "photo_url": "https://m.media-amazon.com/images/I/81au1OTdd6L._AC_SY450_.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Stanley - Copo de cerveja isolado",
+      "price": 75.99,
+      "description": "copo empilhável Stay Chill de 473 ml, para bebidas quentes ou frias, Lilac",
+      "photo_url": "https://m.media-amazon.com/images/I/71A3UJizJoL.__AC_SX300_SY300_QL70_ML2_.jpg"
+    },
+    {
+      "id": "5",
+      "name": "PHILIPS Liquidificador Série 5000",
+      "price": 235.69,
+      "description": "RI2242, Preto, 110v, Jarra Inquebrável, Walita",
+      "photo_url": "https://m.media-amazon.com/images/I/613LbadctMS._AC_SY679_.jpg"
+    },
+    {
+      "id": "6",
+      "name": "Produto 6",
+      "price": 69.99,
+      "description": "Descrição do Produto 6",
+      "photo_url": "https://picsum.photos/200"
+    },
+    {
+      "id": "7",
+      "name": "Produto 7",
+      "price": 79.99,
+      "description": "Descrição do Produto 7",
+      "photo_url": "https://picsum.photos/200"
+    },
+    {
+      "id": "8",
+      "name": "Produto 8",
+      "price": 89.99,
+      "description": "Descrição do Produto 8",
+      "photo_url": "https://picsum.photos/200"
+    },
+    {
+      "id": "9",
+      "name": "Produto 9",
+      "price": 99.99,
+      "description": "Descrição do Produto 9",
+      "photo_url": "https://picsum.photos/200"
+    },
+    {
+      "id": "10",
+      "name": "Produto 10",
+      "price": 109.99,
+      "description": "Descrição do Produto 10",
+      "photo_url": "https://picsum.photos/200"
+    },
+    {
+      "id": "11",
+      "name": "Produto 11",
+      "price": 119.99,
+      "description": "Descrição do Produto 11",
+      "photo_url": "https://picsum.photos/200"
+    },
+    {
+      "id": "12",
+      "name": "Produto 12",
+      "price": 129.99,
+      "description": "Descrição do Produto 12",
+      "photo_url": "https://picsum.photos/200"
+    },
+    {
+      "id": "13",
+      "name": "Produto 13",
+      "price": 139.99,
+      "description": "Descrição do Produto 13",
+      "photo_url": "https://picsum.photos/200"
+    }
+  ]
+}

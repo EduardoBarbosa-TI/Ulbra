@@ -1,0 +1,78 @@
+#div-datacep {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+#div-datacep > .container {
+    text-align: center;
+    max-width: 600px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#div-datacep > .container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+#div-datacep > input[type="text"] {
+    padding: 10px;
+    margin: 15px 0;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    font-size: 16px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#div-datacep > input[type="text"]:focus {
+    border-color: #007bff;
+}
+
+#div-datacep > button {
+    padding: 12px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#div-datacep > button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+#div-datacep > button:active {
+    transform: scale(0.98);
+}
+
+#div-datacep > h1 {
+    color: #333;
+    margin: 10px 0;
+    font-size: 1.5rem;
+}
+
+#div-datacep > h1:nth-child(3),
+h1:nth-child(4) {
+    color: #555;
+    font-size: 1.2rem;
+}

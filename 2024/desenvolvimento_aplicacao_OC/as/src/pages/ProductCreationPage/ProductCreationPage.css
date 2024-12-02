@@ -1,0 +1,91 @@
+/* Container do formulário */
+#div-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+
+    padding: 20px;
+}
+
+#div-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+#div-form h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#div-form input, 
+#div-form textarea {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#div-form input:focus,
+#div-form textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.2);
+    background-color: #ffffff;
+    outline: none;
+}
+
+#div-form textarea {
+    resize: none;
+    min-height: 80px;
+}
+
+#div-form button {
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#div-form button:hover {
+    background-color: #218838;
+}
+
+#div-form button:active {
+    transform: scale(0.97);
+}
+
+@media (max-width: 768px) {
+    #div-form form {
+        width: 90%;
+        padding: 20px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,86 @@
+#div-edit-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10vh;
+    min-height: 60vh;
+    padding: 20px;
+}
+
+#div-edit-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 400px;
+    padding: 25px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.4s ease;
+}
+
+#div-edit-form h2 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#div-edit-form input,
+#div-edit-form textarea {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Arial', sans-serif;
+}
+
+#div-edit-form textarea {
+    resize: none;
+    height: 100px;
+}
+
+#div-edit-form input:focus,
+#div-edit-form textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+#div-edit-form button {
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#div-edit-form button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+#div-edit-form button:active {
+    background-color: #003f7f;
+    transform: translateY(0);
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
