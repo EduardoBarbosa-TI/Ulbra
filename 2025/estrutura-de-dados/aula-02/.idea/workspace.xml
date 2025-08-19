@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fe9f3427-b525-4a23-83f6-201ae31da577" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../2024/desenvolvimento_aplicacao_OC/as/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../2024/desenvolvimento_aplicacao_OC/as/db.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2024/desenvolvimento_aplicacao_OC/aula_04_fogaca/exemplodaoc" beforeDir="false" afterPath="$PROJECT_DIR$/../../../2024/desenvolvimento_aplicacao_OC/aula_04_fogaca/exemplodaoc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2024/desenvolvimento_aplicacao_OC/aula_16/src/mock/data.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2024/inteligencia_artificial/aula_03/tde/tde.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2024/tecnologias_moveis/semipresencial_03/material-components-android-codelabs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../2024/tecnologias_moveis/semipresencial_03/material-components-android-codelabs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atividade-01/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/atividade-01/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atividade-01/src/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/atividade-01/src/Pessoa.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="30ymMOP1y2olbTP0jAVqqMcAFjD" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/dudus/gitHub/Ulbra/2025/estrutura-de-dados/aula-02",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "/home/juliano/IdeaProjects/tde-02-qui/src/Main.java",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.23892.409" />
+        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-IU-252.23892.409" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fe9f3427-b525-4a23-83f6-201ae31da577" name="Changes" comment="" />
+      <created>1754608138815</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1754608138815</updated>
+      <workItem from="1755568563918" duration="828000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
