@@ -1,0 +1,115 @@
+📘 Projeto: Classe Matriz em Java
+
+Este projeto implementa uma classe Matriz em Java, que permite criação, manipulação, exibição e ordenação de matrizes utilizando diferentes algoritmos de ordenação (Bubble Sort e Quick Sort).
+
+📑 Descrição da Classe Matriz
+🔹 Atributos
+
+int[][] elementos → armazena os valores da matriz.
+
+int linhas → número de linhas.
+
+int colunas → número de colunas.
+
+🔹 Métodos principais
+
+preencherManual() → preenche a matriz com valores informados pelo usuário.
+
+preencherAutomatico(int limiteMin, int limiteMax) → preenche com valores aleatórios.
+
+removerElemento(int linha, int coluna) → zera o valor de uma posição específica.
+
+exibirMatriz() → imprime a matriz formatada.
+
+ordenarPorLinhas(boolean usarQuickSort) → ordena cada linha.
+
+ordenarPorColunas(boolean usarQuickSort) → ordena cada coluna.
+
+ordenarMatrizCompleta(boolean usarQuickSort) → ordena todos os elementos como vetor.
+
+🔹 Métodos auxiliares de ordenação
+
+bubbleSort(int[] vetor)
+
+quickSort(int[] vetor, int inicio, int fim)
+
+particionar(int[] vetor, int inicio, int fim)
+
+
+⚙️ Funcionalidades Implementadas
+
+Criar matriz com dimensões personalizadas.
+
+Preencher matriz manualmente ou automaticamente.
+
+Exibir valores da matriz.
+
+Remover elementos específicos.
+
+Ordenar matriz:
+
+Por linhas
+
+Por colunas
+
+Matriz inteira
+
+🔄 Algoritmos de Ordenação
+🔹 Bubble Sort
+
+Abordagem: iterativo e simples.
+
+Complexidade:
+
+Pior caso → O(n²)
+
+Melhor caso → O(n)
+
+Mais eficiente em:
+
+Matrizes pequenas.
+
+Quando os dados já estão quase ordenados.
+
+🔹 Quick Sort
+
+Abordagem: recursivo, divisão e conquista.
+
+Complexidade:
+
+Pior caso → O(n²)
+
+Caso médio/melhor caso → O(n log n)
+
+Mais eficiente em:
+
+Matrizes grandes.
+
+Dados desordenados de forma aleatória.
+
+📊 Comparação dos Algoritmos
+Algoritmo	Abordagem	Complexidade Média	Melhor uso
+Bubble Sort	Iterativo	O(n²)	Listas pequenas ou quase ordenadas
+Quick Sort	Recursivo	O(n log n)	Listas grandes e desordenadas
+📝 Conclusões
+
+Dificuldades:
+
+Manipular colunas exigiu uso de vetores auxiliares.
+
+Reconstruir a matriz após ordenação completa.
+
+Aplicar recursão no Quick Sort.
+
+Aprendizados:
+
+Não faz sentido comparar um algoritmo iterativo como o Bubble Sort com um recursivo como o Quick Sort, pois a diferença de desempenho entre eles é extremamente significativa
+
+Escolher algoritmos de acordo com o contexto.
+
+Transformar matriz em vetor para aplicar ordenação.
+
+Entender recursão e divisão e conquista.
+
+Reflexão:
+O projeto reforça conceitos de POO, estruturas de dados e algoritmos de ordenação, mostrando que não há algoritmo universalmente melhor, mas sim o mais adequado para cada situação e utilizar algoritmos recursivos entregarão muita performace que algoritmos iterativos.
