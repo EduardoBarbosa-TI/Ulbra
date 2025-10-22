@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5ab9eed4-d4a6-4d90-ac71-09bdeff40134" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../2024/desenvolvimento_aplicacao_OC/as/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../2024/desenvolvimento_aplicacao_OC/as/db.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2024/desenvolvimento_aplicacao_OC/aula_04_fogaca/exemplodaoc" beforeDir="false" afterPath="$PROJECT_DIR$/../../2024/desenvolvimento_aplicacao_OC/aula_04_fogaca/exemplodaoc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2024/desenvolvimento_aplicacao_OC/aula_16/src/mock/data.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2024/inteligencia_artificial/aula_03/tde/tde.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2024/tecnologias_moveis/semipresencial_03/material-components-android-codelabs" beforeDir="false" afterPath="$PROJECT_DIR$/../../2024/tecnologias_moveis/semipresencial_03/material-components-android-codelabs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../estrutura-de-dados/aula-02/atividade-01" beforeDir="false" afterPath="$PROJECT_DIR$/../estrutura-de-dados/aula-02/atividade-01" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../estrutura-de-dados/aula-05/tde/src/Vetor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../estrutura-de-dados/aula-05/tde/src/Vetor.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="34FhJKp7QLUd6yZwPsPXG0Ek10L" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "main",
+    "show.migrate.to.gradle.popup": "false"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5ab9eed4-d4a6-4d90-ac71-09bdeff40134" name="Changes" comment="" />
+      <created>1760815157187</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1760815157187</updated>
+    </task>
+    <servers />
+  </component>
+</project>
