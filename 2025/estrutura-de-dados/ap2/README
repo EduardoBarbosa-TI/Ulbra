@@ -1,0 +1,134 @@
+# 💻 Estruturas de Dados – Pilhas, Filas e Listas Ligadas
+
+Projeto desenvolvido para a disciplina de **Estruturas de Dados**, com o objetivo de implementar manualmente estruturas clássicas de armazenamento dinâmico em Java, sem o uso de bibliotecas prontas como `java.util.Stack`, `java.util.Queue` ou `java.util.LinkedList`.
+
+O projeto está dividido em **duas partes principais**:
+
+---
+
+## ☕ Parte 1 – Sistema de Pedidos da Cafeteria (Pilha e Fila com Lista Simplesmente Ligada)
+
+Nesta parte, foi desenvolvido um sistema de gerenciamento de pedidos de uma cafeteria utilizando listas simplesmente ligadas para simular o comportamento de pilhas e filas.
+
+### 🧠 Estruturas Implementadas
+- **Fila de Pedidos Pendentes:**  
+  Implementada com lista simplesmente ligada, segue o princípio **FIFO (First In, First Out)**.  
+  - Operações: `enqueue()`, `dequeue()`, `printQueue()`
+
+- **Pilha de Pedidos Cancelados:**  
+  Implementada com lista simplesmente ligada, segue o princípio **LIFO (Last In, First Out)**.  
+  - Operações: `push()`, `pop()`, `printStack()`
+
+### ⚙️ Funcionalidades do Sistema
+1. **Adicionar novo pedido:** insere o pedido no final da fila de pendentes.  
+2. **Atender pedido:** remove o pedido mais antigo da fila.  
+3. **Cancelar pedido:** remove da fila e adiciona ao topo da pilha de cancelados.  
+4. **Restaurar pedido:** retira o último pedido cancelado da pilha e recoloca na fila.  
+5. **Imprimir pedidos pendentes:** exibe todos os pedidos ainda na fila.  
+6. **Imprimir pedidos cancelados:** exibe todos os pedidos armazenados na pilha.  
+7. **Sair:** encerra o programa.
+
+### 📂 Estrutura de Arquivos – Parte 1
+
+src/
+├── Pedido.java # Representa um pedido (id, descrição)
+├── No.java # Nó para lista simplesmente ligada
+├── FilaPedidos.java # Implementação da fila (pedidos pendentes)
+├── PilhaCancelados.java # Implementação da pilha (pedidos cancelados)
+└── SistemaCafeteria.java # Classe principal com menu interativo
+
+🎵 Parte 2 – Gerenciador de Músicas (Lista Duplamente Ligada)
+
+Nesta segunda parte, foi implementado um gerenciador de playlists de músicas simulando um player de música, utilizando lista duplamente encadeada.
+
+🎶 Estrutura Implementada
+
+Cada nó contém:
+
+Título da música
+
+Artista
+
+Álbum
+
+Duração (em segundos)
+
+A lista duplamente ligada permite navegar para frente e para trás entre as músicas, bem como adicionar e remover elementos de forma eficiente.
+
+🧰 Funcionalidades
+
+Próxima música: avança para o próximo nó da lista.
+
+Música anterior: retorna ao nó anterior.
+
+Tocar música atual: exibe informações detalhadas da música selecionada.
+
+Adicionar música: insere uma nova música no final da playlist.
+
+Listar músicas: exibe todas as músicas na ordem atual.
+
+Sair: encerra o programa.
+
+📂 Estrutura de Arquivos – Parte 2
+src/
+├── Musica.java              # Representa uma música (título, artista, álbum, duração)
+├── NoDuplo.java             # Nó para lista duplamente ligada
+├── Playlist.java            # Implementação da lista duplamente encadeada
+└── GerenciadorMusicas.java  # Classe principal com menu interativo
+
+🧩 Conceitos Envolvidos
+
+Listas Ligadas: Estruturas dinâmicas compostas por nós interconectados.
+
+Pilha (LIFO): Último a entrar é o primeiro a sair.
+
+Fila (FIFO): Primeiro a entrar é o primeiro a sair.
+
+Lista Duplamente Ligada: Permite navegação em ambas as direções.
+
+Encapsulamento e Abstração: Cada estrutura implementa seus próprios métodos de manipulação.
+
+🧱 Tecnologias Utilizadas
+
+Linguagem: Java
+
+Paradigma: Programação Orientada a Objetos (POO)
+
+Bibliotecas: Nenhuma biblioteca externa (implementação 100% manual)
+
+📖 Exemplos de Execução
+☕ Sistema da Cafeteria
+=== SISTEMA DE PEDIDOS DA CAFETERIA ===
+1. Adicionar novo pedido
+2. Atender pedido
+3. Cancelar pedido
+4. Restaurar pedido cancelado
+5. Imprimir pedidos pendentes
+6. Imprimir pedidos cancelados
+7. Sair
+Opção: 1
+Descrição do pedido: Café Expresso
+Pedido adicionado!
+
+🎵 Gerenciador de Músicas
+=== GERENCIADOR DE MÚSICAS ===
+1. Próxima música
+2. Música anterior
+3. Tocar música atual
+4. Adicionar música
+5. Listar músicas
+6. Sair
+Opção: 4
+Título: Imagine
+Artista: John Lennon
+Álbum: Imagine
+Duração (s): 183
+Música adicionada!
+
+👨‍💻 Autor
+
+Eduardo Barbosa Bernardes
+📧 eduardobb@rede.ulbra.br
+
+📍 Curso de Ciência da Computação / Engenharia de Software
+🗓️ Ano: 2025
